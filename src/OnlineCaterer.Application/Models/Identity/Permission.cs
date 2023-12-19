@@ -1,4 +1,5 @@
 ﻿using OnlineCaterer.Application.Contracts.Persistence;
+using OnlineCaterer.Application.Exceptions;
 
 namespace OnlineCaterer.Application.Models.Identity
 {
@@ -20,7 +21,7 @@ namespace OnlineCaterer.Application.Models.Identity
 			return new Permission(action, obj);
 		}
 
-		public static Permission? Find(IUnitOfWork unitOfWork, int objectId, int actionId)
+		public static async Task<Permission> Find(IUnitOfWork unitOfWork, int objectId, int actionId)
 		{
 			if (unitOfWork == null)
 			{
@@ -34,9 +35,18 @@ namespace OnlineCaterer.Application.Models.Identity
 			{
 				throw new InvalidDataException($"{nameof(actionId)} must greater than 0.");
 			}
-			//unitOfWork.
 
-			return null;
+			try
+			{
+				Domain.Identity.Object obj = await unitOfWork.ObjectRepository.Get(objectId);
+				Domain.Identity.Action act = await unitOfWork.ActionRepository.Get(actionId);
+
+				return new Permission(act, obj);
+			}
+			catch(NotFoundException)
+			{
+				throw;
+			}
 		}
 	}
 }

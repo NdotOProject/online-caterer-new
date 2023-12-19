@@ -16,6 +16,10 @@ namespace OnlineCaterer.Application.Features.Food.Update
 			{
 				RuleFor(o => o.Id)
 					.GreaterThan(0)
+					.MustAsync(async (id, token) =>
+					{
+						return (await unitOfWork.FoodRepository.Get(id)) != null;
+					})
 					.WithMessage("Not Found");
 
 				RuleFor(o => o.CategoryId)
@@ -49,6 +53,10 @@ namespace OnlineCaterer.Application.Features.Food.Update
 				RuleFor(o => o.UnitPrice)
 					.GreaterThanOrEqualTo(0)
 					.WithMessage("Price must greater than 0.");
+
+				RuleFor(o => o.CurrentQuantity)
+					.GreaterThanOrEqualTo(0)
+					.WithMessage("CurrentQuantity must greater than 0.");
 
 			}
 		}

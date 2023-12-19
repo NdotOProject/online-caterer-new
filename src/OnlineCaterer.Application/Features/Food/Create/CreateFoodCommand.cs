@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using FluentValidation.Results;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using OnlineCaterer.Application.Constants;
-using OnlineCaterer.Application.Contracts.Identity;
+using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Persistence;
-using OnlineCaterer.Application.Contracts.Services;
 using OnlineCaterer.Application.Models;
+using OnlineCaterer.Application.Models.Identity;
 using OnlineCaterer.Domain.Core;
-using System.Net;
+using OnlineCaterer.Domain.Identity;
 
 namespace OnlineCaterer.Application.Features.Food.Create
 {
@@ -16,88 +13,74 @@ namespace OnlineCaterer.Application.Features.Food.Create
 	{
 		public CreateFoodRequest CreateFoodRequest { get; set; } = null!;
 
-		public class Handler : IRequestHandler<CreateFoodCommand, CommandResponse<CreateFoodResponse>>
+		public class Handler : CommandHandler<CreateFoodRequest, CreateFoodResponse>,
+			IRequestHandler<CreateFoodCommand, CommandResponse<CreateFoodResponse>>
 		{
 			private readonly IUnitOfWork _unitOfWork;
-			private readonly IHttpContextAccessor _httpContextAccessor;
 			private readonly IMapper _mapper;
-			private readonly IPermissionCollection _permissionCollection;
-			private readonly IUserService _userService;
 
 			public Handler(
 				IUnitOfWork unitOfWork,
-				IHttpContextAccessor httpContextAccessor,
 				IMapper mapper,
-				IPermissionCollection permissionCollection,
-				IUserService userService)
+				IPermissionProvider permissonProvider,
+				IUserService userService
+			) : base(
+				userService,
+				permissonProvider.GetPermission(Objects.Food, Actions.Create).Result
+			)
 			{
 				_unitOfWork = unitOfWork;
-				_httpContextAccessor = httpContextAccessor;
 				_mapper = mapper;
-				_permissionCollection = permissionCollection;
-				_userService = userService;
 			}
 
 			public async Task<CommandResponse<CreateFoodResponse>> Handle(CreateFoodCommand request, CancellationToken cancellationToken)
 			{
-				var response = new CommandResponse<CreateFoodResponse>();
-				var validator = new CreateFoodRequest.Validator(_unitOfWork);
-				ValidationResult validationResult = await validator.ValidateAsync(request.CreateFoodRequest, cancellationToken);
+				await Execute(
+					request.CreateFoodRequest,
+					new CreateFoodRequest.Validator(_unitOfWork),
+					cancellationToken
+				);
+				return Response;
+			}
 
-				int userId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(
-					q => q.Type == CustomClaimTypes.Uid)?.Value);
+			protected override string Reject() => "Creation Failed!";
 
-				var permissions = _unitOfWork.UserRepository.GetPermissions(userId);
-				if (!permissions.Contains(_permissionCollection.CreateFoodPermission))
-				{
-					validationResult.Errors.Add(
-						new ValidationFailure
-						{
-							ErrorMessage = "Ban khong co quyen tao moi mon an.",
-							ErrorCode = HttpStatusCode.Forbidden.ToString(),
-						}
-					);
-				}
+			protected override async Task<(
+					string Message,
+					CreateFoodResponse? Data,
+					List<object>? Includes
+				)> Resolve(CreateFoodRequest request)
+			{
+				var food = _mapper.Map<Domain.Core.Food>(request);
 
-				if (validationResult.IsValid)
-				{
-					var food = _mapper.Map<Domain.Core.Food>(request.CreateFoodRequest);
+				food.RatingPoint = 0;
+				food.Discontinued = false;
+				food.CurrentQuantity = 0;
 
-					food.RatingPoint = 0;
-					food.Discontinued = false;
-					food.CurrentQuantity = 0;
-
-					List<FoodImage> images = request.CreateFoodRequest.Images.ConvertAll(
-						img => new FoodImage
-						{
-							Name = img,
-							Food = food,
-							FoodId = food.Id,
-						}
-					);
-
-					food.Images = images;
-
-					food = await _unitOfWork.FoodRepository.Add(food);
-					await _unitOfWork.FoodImageRepository.AddRange(images);
-
-					await _unitOfWork.Commit(userId);
-
-					response.Success = true;
-					response.Message = "Creation Successful";
-					response.Data = new CreateFoodResponse
+				List<FoodImage> images = request.Images.ConvertAll(
+					img => new FoodImage
 					{
-						CreatedFoodId = food.Id
-					};
-				}
-				else
-				{
-					response.Success = false;
-					response.Message = "Request Failed!";
-					response.Errors = validationResult?.Errors.Select(x => x.ErrorMessage).ToList();
-				}
+						Name = img,
+						Food = food,
+						FoodId = food.Id,
+					}
+				);
 
-				return response;
+				food.Images = images;
+
+				food = await _unitOfWork.FoodRepository.Add(food);
+				await _unitOfWork.FoodImageRepository.AddRange(images);
+
+				await _unitOfWork.Commit(User.Id);
+
+				return (
+					Message: $"The food with id {food.Id} has been created.",
+					Data: new CreateFoodResponse
+					{
+						Id = food.Id,
+					},
+					Includes: null
+				);
 			}
 		}
 	}

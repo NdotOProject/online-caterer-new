@@ -9,12 +9,9 @@ namespace OnlineCaterer.Persistence
 {
 	public class OnlineCatererDbContext : DbContext
 	{
-		/*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		public OnlineCatererDbContext(DbContextOptions options) : base(options)
 		{
-			base.OnConfiguring(optionsBuilder);
-
-			optionsBuilder.UseSqlServer(OnlineCatererConnectionString.Value);
-		}*/
+		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

@@ -2,6 +2,6 @@
 {
 	public class CreateFoodResponse
 	{
-		public int CreatedFoodId { get; set; }
+		public int Id { get; set; }
 	}
 }

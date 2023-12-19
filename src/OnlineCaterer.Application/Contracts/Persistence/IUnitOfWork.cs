@@ -1,16 +1,10 @@
-﻿using OnlineCaterer.Application.Contracts.Persistence.Extensions;
-using OnlineCaterer.Application.Contracts.Persistence.Identity;
+﻿using OnlineCaterer.Application.Contracts.Repositories.Core;
+using OnlineCaterer.Application.Contracts.Repositories.Identity;
 
 namespace OnlineCaterer.Application.Contracts.Persistence
 {
 	public interface IUnitOfWork : IDisposable
 	{
-		// identity
-		IActionRepository ActionRepository { get; }
-		IGroupRepository GroupRepository { get; }
-		IObjectRepository ObjectRepository { get; }
-		IUserRepository UserRepository { get; }
-
 		// core
 		ICustomerRepository CustomerRepository { get; }
 		IEmployeeRepository EmployeeRepository { get; }
@@ -23,6 +17,13 @@ namespace OnlineCaterer.Application.Contracts.Persistence
 		IOrderRepository OrderRepository { get; }
 		IPaymentMethodRepository PaymentMethodRepository { get; }
 		ISupplierRepository SupplierRepository { get; }
+
+		// identity
+		IActionRepository ActionRepository { get; }
+		IGroupRepository GroupRepository { get; }
+		IObjectRepository ObjectRepository { get; }
+		IUserRepository UserRepository { get; }
+		IUserTypeRepository UserTypeRepository { get; }
 
 		Task Commit(int userId);
 	}

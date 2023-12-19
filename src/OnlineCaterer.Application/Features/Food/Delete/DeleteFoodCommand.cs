@@ -13,6 +13,11 @@ namespace OnlineCaterer.Application.Features.Food.Delete
 		{
 			private readonly IUnitOfWork _unitOfWork;
 
+			public Handler(IUnitOfWork unitOfWork)
+			{
+				_unitOfWork = unitOfWork;
+			}
+
 			public async Task<CommandResponse<DeleteFoodResponse>> Handle(DeleteFoodCommand request, CancellationToken cancellationToken)
 			{
 				var response = new CommandResponse<DeleteFoodResponse>();
@@ -23,13 +28,13 @@ namespace OnlineCaterer.Application.Features.Food.Delete
 					_unitOfWork.FoodRepository.Delete(food);
 
 					response.Success = true;
-					response.Message = "Delete Done and Success.";
+					response.Message = "Delete Done and Successfull.";
 				}
 				catch (NotFoundException)
 				{
 					response.Success = false;
-					response.Message = "";
-					errors.Add("");
+					response.Message = "Delete Failed!";
+					errors.Add("The food not found!");
 				}
 
 				if (errors.Count > 0)
