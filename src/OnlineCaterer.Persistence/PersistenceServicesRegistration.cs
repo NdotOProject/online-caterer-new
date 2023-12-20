@@ -23,7 +23,8 @@ namespace OnlineCaterer.Persistence
 			);
 
 			// Contracts.Identity.Services
-			services.AddSingleton<IPermissionProvider, PermissonProvider>();
+			services.AddScoped<IAuthService, AuthService>();
+			services.AddScoped<IPermissionProvider, PermissonProvider>();
 			services.AddScoped<IUserService, UserService>();
 
 			// Contracts.Persistence

@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCaterer.Api", "src\On
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCaterer.Infrastructure", "src\OnlineCaterer.Infrastructure\OnlineCaterer.Infrastructure.csproj", "{09E820EE-9253-4265-BA68-BD26BB0EAF94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCaterer.Web.MVC", "src\OnlineCaterer.Web.MVC\OnlineCaterer.Web.MVC.csproj", "{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{09E820EE-9253-4265-BA68-BD26BB0EAF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E820EE-9253-4265-BA68-BD26BB0EAF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E820EE-9253-4265-BA68-BD26BB0EAF94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

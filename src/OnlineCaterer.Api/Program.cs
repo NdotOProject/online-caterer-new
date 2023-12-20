@@ -32,6 +32,12 @@ namespace OnlineCaterer.Api
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
 			{
+				using (var serviceScope = app.Services?.GetService<IServiceScopeFactory>()?.CreateScope())
+				{
+					var context = serviceScope?.ServiceProvider.GetRequiredService<OnlineCatererDbContext>();
+					context?.Database.EnsureCreated();
+				}
+
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}

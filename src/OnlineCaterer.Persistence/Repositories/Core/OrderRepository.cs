@@ -29,7 +29,7 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			{
 				UserTypes.Employee => await GetAll(o => o.EmployeeId == userId),
 				UserTypes.Customer => await GetAll(o => o.CustomerId == userId),
-				UserTypes.Supplierr => await GetAll(o => o.SupplierId == userId),
+				UserTypes.Supplier => await GetAll(o => o.SupplierId == userId),
 				_ => new List<Order>()
 			};
 		}

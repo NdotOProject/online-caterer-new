@@ -9,11 +9,14 @@ namespace OnlineCaterer.Application.Contracts.Identity.Services
 
 		Task<UserTypes> GetTypeOfCurrentUser();
 
+		int GetUserTypeId(UserTypes userType);
+
 		public async Task<bool> UserHasPermission(Permission permission)
 		{
 			User user = await GetCurrentUser();
 			return user.Permissions.Where(p =>
-				p.Object == permission.Object && p.Action == permission.Action
+				p.Object == permission.Object
+				&& p.Action == permission.Action
 			).Any();
 		}
 	}

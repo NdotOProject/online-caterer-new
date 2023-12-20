@@ -11,11 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Customer\Create\" />
     <Folder Include="Features\Customer\Delete\" />
-    <Folder Include="Features\Customer\Queries\All\" />
-    <Folder Include="Features\Customer\Queries\One\" />
-    <Folder Include="Features\Customer\Update\" />
     <Folder Include="Features\Employee\Create\" />
     <Folder Include="Features\Employee\Delete\" />
     <Folder Include="Features\Employee\Queries\All\" />
@@ -31,7 +27,6 @@
     <Folder Include="Features\FoodImage\Queries\All\" />
     <Folder Include="Features\FoodImage\Queries\One\" />
     <Folder Include="Features\FoodImage\Update\" />
-    <Folder Include="Features\Food\Queries\One\" />
     <Folder Include="Features\Group\Create\" />
     <Folder Include="Features\Group\Delete\" />
     <Folder Include="Features\Group\Queries\All\" />

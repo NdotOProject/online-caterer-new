@@ -10,6 +10,7 @@ namespace OnlineCaterer.Domain.Identity
 		public string Description { get; set; } = string.Empty;
 
 		// impl IAuditableEntity
+		public int ModifiedByUserType { get; set; }
 		public DateTime CreatedDate { get; set; }
 		public int CreatedBy { get; set; }
 		public DateTime LastModifiedDate { get; set; }

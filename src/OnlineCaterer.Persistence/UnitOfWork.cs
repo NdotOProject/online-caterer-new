@@ -2,6 +2,7 @@
 using OnlineCaterer.Application.Contracts.Repositories.Core;
 using OnlineCaterer.Application.Contracts.Repositories.Identity;
 using OnlineCaterer.Domain.Core;
+using OnlineCaterer.Domain.Identity;
 using OnlineCaterer.Persistence.Repositories.Core;
 using OnlineCaterer.Persistence.Repositories.Generic;
 using OnlineCaterer.Persistence.Repositories.Identity;
@@ -30,7 +31,7 @@ namespace OnlineCaterer.Persistence
 
 		public IFoodImageRepository FoodImageRepository => new FoodImageRepository(_dbContext);
 
-		public IFoodRepository FoodRepository => new FoodRepository(_dbContext);
+		public IFoodRepository FoodRepository => new FoodRepository(_dbContext, OrderDetailRepository);
 
 		public IOrderDetailRepository OrderDetailRepository =>
 			new OrderDetailRepository(
@@ -61,9 +62,9 @@ namespace OnlineCaterer.Persistence
 
 		public IUserTypeRepository UserTypeRepository => new UserTypeRepository(_dbContext);
 
-		public async Task Commit(int userId)
+		public async Task SaveChanges(User byUser)
 		{
-			await _dbContext.SaveChangesAsync(Convert.ToInt32(userId));
+			await _dbContext.SaveChangesAsync(byUser.UserId, byUser.UserTypeId);
 		}
 
 		public void Dispose()

@@ -12,6 +12,5 @@
 		public int RatingPoint { get; set; }
 		public bool Discontinued { get; set; }
 		public int CurrentQuantity { get; set; }
-
 	}
 }

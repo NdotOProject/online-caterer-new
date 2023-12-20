@@ -1,5 +1,6 @@
 ﻿using OnlineCaterer.Application.Contracts.Repositories.Core;
 using OnlineCaterer.Application.Contracts.Repositories.Identity;
+using OnlineCaterer.Domain.Identity;
 
 namespace OnlineCaterer.Application.Contracts.Persistence
 {
@@ -25,6 +26,6 @@ namespace OnlineCaterer.Application.Contracts.Persistence
 		IUserRepository UserRepository { get; }
 		IUserTypeRepository UserTypeRepository { get; }
 
-		Task Commit(int userId);
+		Task SaveChanges(User byUser);
 	}
 }

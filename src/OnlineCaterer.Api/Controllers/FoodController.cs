@@ -1,10 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnlineCaterer.Application.Features.Food.Create;
 using OnlineCaterer.Application.Features.Food.Queries;
 using OnlineCaterer.Application.Features.Food.Queries.All;
-using OnlineCaterer.Domain.Core;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using OnlineCaterer.Application.Features.Food.Queries.One;
 
 namespace OnlineCaterer.Api.Controllers
 {
@@ -18,36 +17,50 @@ namespace OnlineCaterer.Api.Controllers
 		public FoodController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
 		{
 			_mediator = mediator;
-			this._httpContextAccessor = httpContextAccessor;
+			_httpContextAccessor = httpContextAccessor;
 		}
-		// GET: api/<FoodController>
 		[HttpGet]
 		public async Task<ActionResult<List<FoodInformation>>> Get()
 		{
-			var foods = await _mediator.Send(new GetAllFoodCommand());
-			return Ok(foods);
+			var response = await _mediator.Send(new GetAllFoodCommand());
+			return Ok(response.ToJson());
 		}
 
-		// GET api/<FoodController>/5
 		[HttpGet("{id}")]
-		public string Get(int id)
+		public async Task<ActionResult<FoodInformation>> Get(int id)
 		{
-			return "value";
+			var response = await _mediator.Send(
+				new GetOneFoodCommand
+				{
+					FoodId = id,
+				}
+			);
+
+			return response.Success
+				? Ok(response.ToJson())
+				: NotFound(response.ToJson());
 		}
 
-		// POST api/<FoodController>
 		[HttpPost]
-		public void Post([FromBody] string value)
+		public async Task<ActionResult> Post([FromBody] CreateFoodRequest request)
 		{
+			var response = await _mediator.Send(
+				new CreateFoodCommand
+				{
+					Body = request,
+				}
+			);
+
+			return response.Success
+				? Created("", null)
+				: BadRequest(response.ToJson());
 		}
 
-		// PUT api/<FoodController>/5
 		[HttpPut("{id}")]
 		public void Put(int id, [FromBody] string value)
 		{
 		}
 
-		// DELETE api/<FoodController>/5
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{

@@ -20,7 +20,7 @@ namespace OnlineCaterer.Persistence
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		}
 
-		public virtual async Task<int> SaveChangesAsync(int userId)
+		public virtual async Task<int> SaveChangesAsync(int userId, int userTypeId)
 		{
 			foreach (var entry in base.ChangeTracker.Entries<IAuditableEntity>()
 				.Where(e => e.State == EntityState.Added
@@ -28,6 +28,8 @@ namespace OnlineCaterer.Persistence
 			{
 				if (entry.Entity is not null)
 				{
+					entry.Entity.ModifiedByUserType = userTypeId;
+
 					entry.Entity.LastModifiedDate = DateTime.Now;
 					entry.Entity.LastModifiedBy = userId;
 

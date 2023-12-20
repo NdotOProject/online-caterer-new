@@ -1,49 +1,11 @@
 ﻿using MediatR;
-using OnlineCaterer.Application.Contracts.Persistence;
-using OnlineCaterer.Application.Exceptions;
-using OnlineCaterer.Application.Models;
+using OnlineCaterer.Application.Models.Api.Request.Delete;
+using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Food.Delete
 {
-	public class DeleteFoodCommand : IRequest<CommandResponse<DeleteFoodResponse>>
+	public class DeleteFoodCommand : DeleteRequest, IRequest<VoidResponse>
 	{
 		public int Id { get; set; }
-
-		public class Handler : IRequestHandler<DeleteFoodCommand, CommandResponse<DeleteFoodResponse>>
-		{
-			private readonly IUnitOfWork _unitOfWork;
-
-			public Handler(IUnitOfWork unitOfWork)
-			{
-				_unitOfWork = unitOfWork;
-			}
-
-			public async Task<CommandResponse<DeleteFoodResponse>> Handle(DeleteFoodCommand request, CancellationToken cancellationToken)
-			{
-				var response = new CommandResponse<DeleteFoodResponse>();
-				List<string> errors = new();
-				try
-				{
-					Domain.Core.Food food = await _unitOfWork.FoodRepository.Get(request.Id);
-					_unitOfWork.FoodRepository.Delete(food);
-
-					response.Success = true;
-					response.Message = "Delete Done and Successfull.";
-				}
-				catch (NotFoundException)
-				{
-					response.Success = false;
-					response.Message = "Delete Failed!";
-					errors.Add("The food not found!");
-				}
-
-				if (errors.Count > 0)
-				{
-					response.Errors = errors;
-				}
-
-				return response;
-			}
-		}
 	}
 }

@@ -4,6 +4,6 @@
 	{
 		Employee,
 		Customer,
-		Supplierr,
+		Supplier,
 	}
 }
