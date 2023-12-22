@@ -5,13 +5,14 @@ using OnlineCaterer.Application.Contracts.Repositories.Identity;
 using OnlineCaterer.Application.Exceptions;
 using OnlineCaterer.Application.Features.Auth.Login;
 using OnlineCaterer.Application.Features.Auth.Register;
-using OnlineCaterer.Application.Models.Identity;
+using OnlineCaterer.Application.Models.Identity.Conventions;
+using OnlineCaterer.Application.Models.Identity.Helper;
 using OnlineCaterer.Domain.Core;
 using OnlineCaterer.Domain.Identity;
 
 namespace OnlineCaterer.Persistence.Identity.Services
 {
-	public class AuthService : IAuthService
+    public class AuthService : IAuthService
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IUserService _userService;

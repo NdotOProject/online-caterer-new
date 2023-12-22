@@ -2,14 +2,17 @@
 using MediatR;
 using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Persistence;
-using OnlineCaterer.Application.Models.Api.Request.Put;
-using OnlineCaterer.Application.Models.Identity;
+using OnlineCaterer.Application.Models.Api.Handler;
+using OnlineCaterer.Application.Models.Api.Response;
+using OnlineCaterer.Application.Models.Identity.Conventions;
+using OnlineCaterer.Application.Models.Identity.Helper;
 
 namespace OnlineCaterer.Application.Features.Food.Update
 {
-	public class UpdateFoodCommandHandler :
-		PutRequestHandler<UpdateFoodCommand, UpdateFoodRequest, UpdateFoodResponse>,
-		IRequestHandler<UpdateFoodCommand, Models.Api.Response.DataResponse<UpdateFoodResponse>>
+    // update food => insert or delete image
+    public class UpdateFoodCommandHandler :
+		PutHandler<UpdateFoodCommand, UpdateFoodRequest, UpdateFoodResponse>,
+		IRequestHandler<UpdateFoodCommand, DataResponse<UpdateFoodResponse>>
 	{
 		private readonly IMapper _mapper;
 		private readonly IUnitOfWork _unitOfWork;
@@ -23,21 +26,23 @@ namespace OnlineCaterer.Application.Features.Food.Update
 			_unitOfWork = unitOfWork;
 		}
 
-		public async Task<Models.Api.Response.DataResponse<UpdateFoodResponse>> Handle(
+		public async Task<DataResponse<UpdateFoodResponse>> Handle(
 			UpdateFoodCommand request, CancellationToken cancellationToken
 		) => await GetResponse(request);
 
-		protected override async Task<Permission?> GetRequiredPermission(
-			IPermissionProvider permissonProvider
-		) => await permissonProvider.GetPermission(Objects.Food, Actions.Update);
+		protected override async Task<Permission> GetPermission(
+			IPermissionProvider provider)
+			=> await provider.GetPermission(Objects.Food, Actions.Update);
 
-		protected override Task Reject(Models.Api.Response.DataResponse<UpdateFoodResponse> response)
+		protected override Task Reject(
+			UpdateFoodCommand request, DataResponse<UpdateFoodResponse> response)
 		{
 			response.Message = "Update Failed!";
 			return Task.CompletedTask;
 		}
 
-		protected override async Task Resolve(UpdateFoodCommand request, Models.Api.Response.DataResponse<UpdateFoodResponse> response)
+		protected override async Task Resolve(
+			UpdateFoodCommand request, DataResponse<UpdateFoodResponse> response)
 		{
 			var food = _mapper.Map<Domain.Core.Food>(request.Body);
 			_unitOfWork.FoodRepository.Update(food);

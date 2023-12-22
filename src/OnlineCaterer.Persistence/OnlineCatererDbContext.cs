@@ -20,7 +20,7 @@ namespace OnlineCaterer.Persistence
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		}
 
-		public virtual async Task<int> SaveChangesAsync(int userId, int userTypeId)
+		public virtual async Task<int> SaveChangesAsync(int userId = 0, int userTypeId = 0)
 		{
 			foreach (var entry in base.ChangeTracker.Entries<IAuditableEntity>()
 				.Where(e => e.State == EntityState.Added

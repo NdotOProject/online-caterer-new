@@ -4,6 +4,7 @@ using OnlineCaterer.Application.Features.Food.Create;
 using OnlineCaterer.Application.Features.Food.Queries;
 using OnlineCaterer.Application.Features.Food.Queries.All;
 using OnlineCaterer.Application.Features.Food.Queries.One;
+using OnlineCaterer.Application.Features.Food.Update;
 
 namespace OnlineCaterer.Api.Controllers
 {
@@ -32,7 +33,7 @@ namespace OnlineCaterer.Api.Controllers
 			var response = await _mediator.Send(
 				new GetOneFoodCommand
 				{
-					FoodId = id,
+					Id = id,
 				}
 			);
 
@@ -57,8 +58,18 @@ namespace OnlineCaterer.Api.Controllers
 		}
 
 		[HttpPut("{id}")]
-		public void Put(int id, [FromBody] string value)
+		public async Task<ActionResult<UpdateFoodResponse>> Put(int id, [FromBody] UpdateFoodRequest request)
 		{
+			var response = await _mediator.Send(
+				new UpdateFoodCommand
+				{
+					Body = request,
+				}
+			);
+
+			return response.Success
+				? Ok(response.ToJson())
+				: Unauthorized(response.ToJson());
 		}
 
 		[HttpDelete("{id}")]

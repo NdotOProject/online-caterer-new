@@ -3,16 +3,17 @@ using MediatR;
 using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Persistence;
 using OnlineCaterer.Application.Models.Api.Error;
-using OnlineCaterer.Application.Models.Api.Request.Post;
+using OnlineCaterer.Application.Models.Api.Handler;
 using OnlineCaterer.Application.Models.Api.Response;
-using OnlineCaterer.Application.Models.Identity;
-using OnlineCaterer.Domain.Core;
+using OnlineCaterer.Application.Models.Identity.Conventions;
+using OnlineCaterer.Application.Models.Identity.Helper;
 using System.Net;
 
 namespace OnlineCaterer.Application.Features.Food.Create
 {
-	public class CreateFoodCommandHandler
-		: PostRequestHandler<CreateFoodCommand, CreateFoodRequest>,
+    // insert food => insert image
+    public class CreateFoodCommandHandler
+		: PostHandler<CreateFoodCommand, CreateFoodRequest>,
 		IRequestHandler<CreateFoodCommand, VoidResponse>
 	{
 		private readonly IMapper _mapper;
@@ -20,8 +21,8 @@ namespace OnlineCaterer.Application.Features.Food.Create
 
 		public CreateFoodCommandHandler(
 			IPermissionProvider permissonProvider, IUserService userService,
-			IMapper mapper, IUnitOfWork unitOfWork
-		) : base(permissonProvider, userService)
+			IMapper mapper, IUnitOfWork unitOfWork)
+			: base(permissonProvider, userService)
 		{
 			_mapper = mapper;
 			_unitOfWork = unitOfWork;
@@ -31,23 +32,24 @@ namespace OnlineCaterer.Application.Features.Food.Create
 			CreateFoodCommand request, CancellationToken cancellationToken)
 			=> await GetResponse(request);
 
-		protected override async Task<Permission?> GetRequiredPermission(
-			IPermissionProvider permissionProvider)
-			=> await permissionProvider.GetPermission(Objects.Food, Actions.Create);
+		protected override async Task<Permission> GetPermission(
+			IPermissionProvider provider)
+			=> await provider.GetPermission(Objects.Food, Actions.Create);
 
-		protected override async Task Validate(CreateFoodCommand request, ErrorList errorList)
+		protected override async Task Validate(
+			CreateFoodCommand request, ErrorList errorList)
 		{
 			var validator = new CreateFoodRequestValidator(_unitOfWork);
 			var validationResult = await validator.ValidateAsync(request.Body);
-			var messages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
 
-			foreach (var message in messages)
+			foreach (var message in validationResult.Errors.Select(e => e.ErrorMessage))
 			{
 				errorList.Add(HttpStatusCode.BadRequest, message);
 			}
 		}
 
-		protected override Task Reject(VoidResponse response)
+		protected override Task Reject(
+			CreateFoodCommand request, VoidResponse response)
 		{
 			response.Message = "Creation Failed!";
 			return Task.CompletedTask;
@@ -58,23 +60,14 @@ namespace OnlineCaterer.Application.Features.Food.Create
 		{
 			var food = _mapper.Map<Domain.Core.Food>(request.Body);
 
-			food.RatingPoint = 0;
-			food.Discontinued = false;
-			food.CurrentQuantity = 0;
-
-			List<FoodImage> images = request.Body.Images.ConvertAll(
-				img => new FoodImage
-				{
-					Name = img,
-					Food = food,
-					FoodId = food.Id,
-				}
-			);
-
-			food.Images = images;
+			foreach (var image in food.Images)
+			{
+				image.Food = food;
+				image.FoodId = food.Id;
+			}
 
 			food = await _unitOfWork.FoodRepository.Add(food);
-			await _unitOfWork.FoodImageRepository.AddRange(images);
+			await _unitOfWork.FoodImageRepository.AddRange(food.Images);
 
 			await _unitOfWork.SaveChanges(await GetUser());
 

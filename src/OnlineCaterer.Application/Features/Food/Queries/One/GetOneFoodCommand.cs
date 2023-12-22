@@ -1,10 +1,13 @@
 ﻿using MediatR;
+using OnlineCaterer.Application.Models.Api.Request;
 using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Food.Queries.One
 {
-    public class GetOneFoodCommand : IRequest<DataResponse<FoodInformation>>
+	public class GetOneFoodCommand
+		: IApiRequest,
+		IRequest<DataResponse<FoodInformation>>
 	{
-		public int FoodId { get; set; }
+		public int Id { get; set; }
 	}
 }

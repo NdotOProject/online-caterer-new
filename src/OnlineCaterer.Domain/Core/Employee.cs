@@ -9,7 +9,7 @@ namespace OnlineCaterer.Domain.Core
 		public string LastName { get; set; } = null!;
 		public string Address { get; set; } = null!;
 		public int RatingPoint { get; set; }
-		public int Status { get; set; }
+		public bool Status { get; set; }
 
 		// rel
 		public ICollection<Order> Orders { get; set; } = new HashSet<Order>();

@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCaterer.Application.Features.Auth.Login;
 using OnlineCaterer.Application.Features.Auth.Register;
+using OnlineCaterer.Application.Features.Customers.Commands;
+using OnlineCaterer.Application.Features.Customers.Requests;
 using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Api.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("api/auth")]
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
@@ -18,7 +20,8 @@ namespace OnlineCaterer.Api.Controllers
 		}
 
 		[HttpPost("/login")]
-		public async Task<ActionResult<DataResponse<LoginResponse>>> Login([FromBody] LoginRequest request)
+		public async Task<ActionResult<DataResponse<LoginResponse>>> Login(
+			[FromBody] LoginRequest request)
 		{
 			var reponse = await _mediator.Send(
 				new LoginCommand
@@ -32,12 +35,13 @@ namespace OnlineCaterer.Api.Controllers
 		}
 
 		[HttpPost("/register")]
-		public async Task<ActionResult<DataResponse<LoginResponse>>> Register([FromBody] RegistrationRequest request)
+		public async Task<ActionResult<string>> Register(
+			[FromBody] CreateCustomerRequest request)
 		{
 			var reponse = await _mediator.Send(
-				new RegistrationCommand
+				new CreateCustomerCommand
 				{
-					RegistrationRequest = request,
+					Body = request
 				}
 			);
 			return Ok(reponse.ToJson());

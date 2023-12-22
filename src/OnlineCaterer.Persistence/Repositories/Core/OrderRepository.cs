@@ -1,12 +1,12 @@
 ﻿using OnlineCaterer.Application.Contracts.Repositories.Core;
 using OnlineCaterer.Application.Contracts.Repositories.Generic;
-using OnlineCaterer.Application.Models.Identity;
+using OnlineCaterer.Application.Models.Identity.Conventions;
 using OnlineCaterer.Domain.Core;
 using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class OrderRepository : ReadOnlyRepository<Order, int>, IOrderRepository
+    public class OrderRepository : ReadOnlyRepository<Order, int>, IOrderRepository
 	{
 		private readonly ICreatableRepository<Order> _creatableRepository;
 

@@ -19,14 +19,22 @@ namespace OnlineCaterer.Application.Models.Api.Error
 
 		public Reader GetReader()
 		{
-			_reader ??= new(this);
+			_reader ??= new ReaderInstance(this);
 			return _reader;
+		}
+
+		private class ReaderInstance : Reader
+		{
+			public ReaderInstance(ErrorList errorList)
+				: base(errorList)
+			{
+			}
 		}
 
 		public class Reader
 		{
 			private readonly ICollection<ErrorInfo> _errors;
-			public Reader(ErrorList errorList)
+			protected Reader(ErrorList errorList)
 			{
 				_errors = errorList._value;
 			}

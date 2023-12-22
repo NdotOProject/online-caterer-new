@@ -2,12 +2,12 @@
 using OnlineCaterer.Application.Constants;
 using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Persistence;
-using OnlineCaterer.Application.Models.Identity;
+using OnlineCaterer.Application.Models.Identity.Conventions;
 using OnlineCaterer.Domain.Identity;
 
 namespace OnlineCaterer.Persistence.Identity.Services
 {
-	public class UserService : IUserService
+    public class UserService : IUserService
 	{
 		private readonly IHttpContextAccessor _httpContextAccessor;
 		private readonly IUnitOfWork _unitOfWork;

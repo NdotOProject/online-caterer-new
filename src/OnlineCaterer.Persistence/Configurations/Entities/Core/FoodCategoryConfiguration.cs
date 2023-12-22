@@ -2,23 +2,27 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineCaterer.Domain.Core;
 using OnlineCaterer.Persistence.Extensions;
+using OnlineCaterer.Persistence.Initializations.Data;
 
 namespace OnlineCaterer.Persistence.Configurations.Entities.Core
 {
-    public class FoodCategoryConfiguration : IEntityTypeConfiguration<FoodCategory>
-    {
-        public void Configure(EntityTypeBuilder<FoodCategory> entity)
-        {
-            entity.IdAutoIncrement();
+	public class FoodCategoryConfiguration
+		: IEntityTypeConfiguration<FoodCategory>
+	{
+		public void Configure(EntityTypeBuilder<FoodCategory> entity)
+		{
+			entity.Initialize();
 
-            entity.ConfigureAuditableProperties();
+			entity.IdAutoIncrement();
 
-            entity.ConfigureDescriptionProperty();
+			entity.ConfigureAuditableProperties();
 
-            entity.Property(foodCategory => foodCategory.Name)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(100)
-                .IsRequired(true);
-        }
-    }
+			entity.ConfigureDescriptionProperty();
+
+			entity.Property(foodCategory => foodCategory.Name)
+				.HasColumnType("nvarchar")
+				.HasMaxLength(100)
+				.IsRequired(true);
+		}
+	}
 }

@@ -2,7 +2,8 @@
 
 namespace OnlineCaterer.Application.Contracts.Repositories.Identity
 {
-	public interface IActionRepository : IReadOnlyRepository<Domain.Identity.Action, int>
+	public interface IActionRepository
+		: IReadOnlyRepository<Domain.Identity.Action, int>
 	{
 	}
 }

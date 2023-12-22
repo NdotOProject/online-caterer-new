@@ -3,14 +3,15 @@ using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Persistence;
 using OnlineCaterer.Application.Exceptions;
 using OnlineCaterer.Application.Models.Api.Error;
-using OnlineCaterer.Application.Models.Api.Request.Delete;
+using OnlineCaterer.Application.Models.Api.Handler;
 using OnlineCaterer.Application.Models.Api.Response;
 using System.Net;
 
 namespace OnlineCaterer.Application.Features.Food.Delete
 {
-	public class DeleteFoodCommandHandler :
-		DeleteRequestHandler<DeleteFoodCommand>,
+    // delete food => delete image and feedback
+    public class DeleteFoodCommandHandler :
+		DeleteHandler<DeleteFoodCommand>,
 		IRequestHandler<DeleteFoodCommand, VoidResponse>
 	{
 		private readonly IUnitOfWork _unitOfWork;
@@ -26,24 +27,31 @@ namespace OnlineCaterer.Application.Features.Food.Delete
 			DeleteFoodCommand request, CancellationToken cancellationToken)
 			=> await GetResponse(request);
 
-		protected override Task Reject(VoidResponse response)
+		protected override Task Reject(
+			DeleteFoodCommand request, VoidResponse response)
 		{
 			response.Message = "Delete Failed!";
 			return Task.CompletedTask;
 		}
 
-		protected override async Task Resolve(DeleteFoodCommand request, VoidResponse response)
+		protected override async Task Resolve(
+			DeleteFoodCommand request, VoidResponse response)
 		{
 			try
 			{
-				Domain.Core.Food food = await _unitOfWork.FoodRepository.Get(request.Id);
+				var food = await _unitOfWork.FoodRepository.Get(request.Id);
 				_unitOfWork.FoodRepository.Delete(food);
 
 				response.Message = "Delete Done and Successfull.";
 			}
 			catch (NotFoundException)
 			{
-				response.AddError(new ErrorInfo(HttpStatusCode.NotFound, "The food not found!"));
+				response.AddError(
+					new ErrorInfo(
+						HttpStatusCode.NotFound,
+						"The food not found!"
+					)
+				);
 			}
 		}
 	}

@@ -3,7 +3,8 @@ using OnlineCaterer.Domain.Core;
 
 namespace OnlineCaterer.Application.Contracts.Repositories.Core
 {
-	public interface IPaymentMethodRepository : IReadOnlyRepository<PaymentMethod, int>
+	public interface IPaymentMethodRepository
+		: IReadOnlyRepository<PaymentMethod, int>
 	{
 	}
 }

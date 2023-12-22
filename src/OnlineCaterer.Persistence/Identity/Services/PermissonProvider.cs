@@ -1,11 +1,12 @@
 ﻿using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Persistence;
 using OnlineCaterer.Application.Exceptions;
-using OnlineCaterer.Application.Models.Identity;
+using OnlineCaterer.Application.Models.Identity.Conventions;
+using OnlineCaterer.Application.Models.Identity.Helper;
 
 namespace OnlineCaterer.Persistence.Identity.Services
 {
-	public class PermissonProvider : IPermissionProvider
+    public class PermissonProvider : IPermissionProvider
 	{
 		private readonly IUnitOfWork _unitOfWork;
 

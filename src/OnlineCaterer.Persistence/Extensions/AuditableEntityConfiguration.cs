@@ -9,6 +9,9 @@ namespace OnlineCaterer.Persistence.Extensions
 		public static EntityTypeBuilder<T> ConfigureAuditableProperties<T>(this EntityTypeBuilder<T> entity)
 			where T : class, IAuditableEntity
 		{
+			entity.Property(e => e.ModifiedByUserType)
+				.IsRequired(true);
+
 			entity.Property(e => e.CreatedBy)
 				.IsRequired(true);
 

@@ -1,8 +1,9 @@
-﻿using OnlineCaterer.Application.Models.Identity;
+﻿using OnlineCaterer.Application.Models.Identity.Conventions;
+using OnlineCaterer.Application.Models.Identity.Helper;
 
 namespace OnlineCaterer.Application.Contracts.Identity.Services
 {
-	public interface IPermissionProvider
+    public interface IPermissionProvider
 	{
 		Task<Permission> GetPermission(Objects obj, Actions act);
 
