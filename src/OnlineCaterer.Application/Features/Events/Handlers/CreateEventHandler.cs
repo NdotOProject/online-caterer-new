@@ -69,9 +69,8 @@ namespace OnlineCaterer.Application.Features.Events.Handlers
 		{
 			var evt = _mapper.Map<Domain.Core.Event>(request.Body);
 
+			_eventRepository.Add(evt);
 
-
-			throw new NotImplementedException();
 		}
 	}
 }
