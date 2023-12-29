@@ -26,8 +26,7 @@ namespace OnlineCaterer.Persistence.Configurations.Entities.Core
 				.IsRequired(true);
 
 			entity.Property(fb => fb.Content)
-				.HasColumnType("nvarchar(max)")
-				.IsRequired(true);
+				.HasColumnType("nvarchar(max)");
 
 			entity.Property(fb => fb.RatingPoint)
 				.IsRequired(true);

@@ -16,11 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineCaterer.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineCaterer.Persistence", "src\OnlineCaterer.Persistence\OnlineCaterer.Persistence.csproj", "{B2408ABB-0B1B-4661-B8BA-8DA256DC3918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCaterer.Api", "src\OnlineCaterer.Api\OnlineCaterer.Api.csproj", "{F057CF35-008D-40DD-8D09-1A9AB0FD90C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineCaterer.Api", "src\OnlineCaterer.Api\OnlineCaterer.Api.csproj", "{F057CF35-008D-40DD-8D09-1A9AB0FD90C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCaterer.Infrastructure", "src\OnlineCaterer.Infrastructure\OnlineCaterer.Infrastructure.csproj", "{09E820EE-9253-4265-BA68-BD26BB0EAF94}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCaterer.Web.MVC", "src\OnlineCaterer.Web.MVC\OnlineCaterer.Web.MVC.csproj", "{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineCaterer.Infrastructure", "src\OnlineCaterer.Infrastructure\OnlineCaterer.Infrastructure.csproj", "{09E820EE-9253-4265-BA68-BD26BB0EAF94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +46,6 @@ Global
 		{09E820EE-9253-4265-BA68-BD26BB0EAF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E820EE-9253-4265-BA68-BD26BB0EAF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E820EE-9253-4265-BA68-BD26BB0EAF94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAA07C62-9DC8-4D33-8424-8DB5880E23EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

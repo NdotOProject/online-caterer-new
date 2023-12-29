@@ -4,9 +4,13 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class PaymentMethodRepository : ReadOnlyRepository<PaymentMethod, int>, IPaymentMethodRepository
+	public class PaymentMethodRepository
+		: ReadOnlyRepository<PaymentMethod, int>,
+		IPaymentMethodRepository
 	{
-		public PaymentMethodRepository(OnlineCatererDbContext dbContext) : base(dbContext)
+		public PaymentMethodRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
 		{
 		}
 	}

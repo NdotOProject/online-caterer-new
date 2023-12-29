@@ -13,7 +13,7 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 					new Event
 					{
 						Id = 1,
-						Name = "Any",
+						Name = "All",
 						Description = "",
 					},
 					new Event
@@ -26,6 +26,36 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 					{
 						Id = 3,
 						Name = "Wedding",
+						Description = "",
+					},
+					new Event
+					{
+						Id = 4,
+						Name = "Christmas",
+						Description = "",
+					},
+					new Event
+					{
+						Id = 5,
+						Name = "New Year",
+						Description = "",
+					},
+					new Event
+					{
+						Id = 6,
+						Name = "Inauguration",
+						Description = "",
+					},
+					new Event
+					{
+						Id = 7,
+						Name = "Ceremony",
+						Description = "",
+					},
+					new Event
+					{
+						Id = 8,
+						Name = "Graduation",
 						Description = "",
 					},
 				}

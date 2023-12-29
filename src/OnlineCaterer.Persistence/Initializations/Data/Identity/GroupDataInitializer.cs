@@ -34,12 +34,6 @@ namespace OnlineCaterer.Persistence.Initializations.Data.Identity
 						Name = "Customer",
 						Description = "",
 					},
-					new Group
-					{
-						Id = 5,
-						Name = "Features Updater",
-						Description = "",
-					},
 				}
 			);
 		}

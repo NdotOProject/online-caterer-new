@@ -2,16 +2,16 @@
 using MediatR;
 using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Contracts.Repositories.Core;
+using OnlineCaterer.Application.DTOs.Event;
 using OnlineCaterer.Application.Features.Events.Queries;
-using OnlineCaterer.Application.Features.Events.Responses;
 using OnlineCaterer.Application.Models.Api.Handler;
 using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Events.Handlers
 {
 	public class GetListEventHandler
-		: GetListHandler<GetListEventQuery, GetEventResponse>,
-		IRequestHandler<GetListEventQuery, ListResponse<GetEventResponse>>
+		: GetListHandler<GetListEventQuery, EventDTO>,
+		IRequestHandler<GetListEventQuery, ListResponse<EventDTO>>
 	{
 		private readonly IEventRepository _eventRepository;
 		private readonly IMapper _mapper;
@@ -25,23 +25,17 @@ namespace OnlineCaterer.Application.Features.Events.Handlers
 			_mapper = mapper;
 		}
 
-		public async Task<ListResponse<GetEventResponse>> Handle(
+		public async Task<ListResponse<EventDTO>> Handle(
 			GetListEventQuery request, CancellationToken cancellationToken)
 		{
 			return await GetResponse(request);
 		}
 
-		protected override Task Reject(
-			GetListEventQuery request, ListResponse<GetEventResponse> response)
-		{
-			return Task.CompletedTask;
-		}
-
 		protected override async Task Resolve(
-			GetListEventQuery request, ListResponse<GetEventResponse> response)
+			GetListEventQuery request, ListResponse<EventDTO> response)
 		{
 			var events = await _eventRepository.GetAll();
-			response.Payload = _mapper.Map<List<GetEventResponse>>(events);
+			response.Payload = _mapper.Map<List<EventDTO>>(events);
 		}
 	}
 }

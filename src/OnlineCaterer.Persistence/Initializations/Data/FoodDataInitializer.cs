@@ -18,10 +18,10 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 						SupplierId = 1,
 						Name = "Fried Chicken",
 						Description = "",
-						UnitPrice = 49999,
-						RatingPoint = 100,
+						UnitPrice = 499999,
+						RatingPoint = 5,
 						Discontinued = false,
-						CurrentQuantity = 69,
+						CurrentQuantity = 5,
 					},
 				}
 			);

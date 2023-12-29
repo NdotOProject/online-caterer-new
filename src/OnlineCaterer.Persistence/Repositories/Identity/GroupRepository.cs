@@ -19,21 +19,36 @@ namespace OnlineCaterer.Persistence.Repositories.Identity
 			_dbContext = dbContext;
 		}
 
+		public new async Task<Group> Get(int key)
+		{
+			return await _dbContext.Groups
+				.Include(g => g.Permissions)
+				.Where(g => g.Id == key)
+				.FirstAsync();
+		}
+
 		public async Task<ICollection<Group>> GetByUserType(int userTypeId)
 		{
 			return await _dbContext.GroupUsers
+				.Include(gu => gu.Group)
 				.Where(gu => gu.User.UserTypeId == userTypeId)
 				.Select(gu => gu.Group)
 				.ToListAsync();
 		}
 
-		public async Task<IReadOnlyCollection<Permission>> GetPermissions(int groupId)
+		public async Task<IReadOnlyCollection<Permission>>
+			GetPermissions(int groupId)
 		{
 			Group group = await Get(groupId);
 			HashSet<Permission> permissions = new();
 			foreach (var permission in group.Permissions)
 			{
-				permissions.Add(Permission.From(permission.Object, permission.Action));
+				permissions.Add(
+					Permission.From(
+						permission.Object,
+						permission.Action
+					)
+				);
 			}
 			return permissions;
 		}

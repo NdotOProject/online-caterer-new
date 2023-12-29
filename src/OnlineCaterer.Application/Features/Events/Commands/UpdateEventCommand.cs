@@ -1,15 +1,34 @@
 ﻿using MediatR;
-using OnlineCaterer.Application.Features.Events.Requests;
-using OnlineCaterer.Application.Features.Events.Responses;
+using OnlineCaterer.Application.DTOs.Event;
+using OnlineCaterer.Application.Exceptions;
 using OnlineCaterer.Application.Models.Api.Request;
 using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Events.Commands
 {
 	public class UpdateEventCommand
-		: IApiBodyRequest<UpdateEventRequest>,
-		IRequest<DataResponse<UpdateEventResponse>>
+		: IApiBodyRequest<UpdateEventDTO>,
+		IRequest<VoidResponse>
 	{
-		public UpdateEventRequest Body { get; set; }
+		public int Id { get; set; }
+
+		private UpdateEventDTO _dto = null!;
+		public UpdateEventDTO Body
+		{
+			get
+			{
+				return _dto;
+			}
+			set {
+				if (value != null && value.Id == Id)
+				{
+					_dto = value;
+				}
+				else
+				{
+					throw new BadRequestException();
+				}
+			}
+		}
 	}
 }

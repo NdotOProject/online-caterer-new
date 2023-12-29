@@ -24,6 +24,10 @@ namespace OnlineCaterer.Persistence.Configurations.Entities.Core
 				.HasColumnType("nvarchar")
 				.HasMaxLength(100)
 				.IsRequired(true);
+
+			entity.Property(img => img.Avatar)
+				.HasDefaultValue(false)
+				.IsRequired(true);
 		}
 	}
 }

@@ -5,7 +5,8 @@ using OnlineCaterer.Domain.Core;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class OrderDetailRepository : IOrderDetailRepository
+	public class OrderDetailRepository
+		: IOrderDetailRepository
 	{
 		private readonly ICreatableRepository<OrderDetail> _creatableRepository;
 		private readonly IUpdatableRepository<OrderDetail> _updatableRepository;
@@ -25,13 +26,13 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			_deletableRepository = deletableRepository;
 		}
 
-
 		public async Task<OrderDetail> Add(OrderDetail entity)
 		{
 			return await _creatableRepository.Add(entity);
 		}
 
-		public async Task AddRange(ICollection<OrderDetail> orderDetails)
+		public async Task AddRange(
+			ICollection<OrderDetail> orderDetails)
 		{
 			await _dbContext.AddRangeAsync(orderDetails);
 		}
@@ -41,9 +42,12 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			_deletableRepository.Delete(entity);
 		}
 
-		public async Task<IReadOnlyCollection<OrderDetail>> GetByOrderId(int orderId)
+		public async Task<IReadOnlyCollection<OrderDetail>>
+			GetByOrderId(int orderId)
 		{
 			return await _dbContext.OrderDetails
+				.Include(od => od.Order)
+				.Include(od => od.Food)
 				.Where(od => od.OrderId == orderId)
 				.ToListAsync();
 		}

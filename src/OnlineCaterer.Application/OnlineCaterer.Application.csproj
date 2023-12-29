@@ -13,23 +13,9 @@
   <ItemGroup>
     <Folder Include="Features\Customers\Mappers\" />
     <Folder Include="Features\Customers\Queries\" />
-    <Folder Include="Features\Employee\Commands\" />
-    <Folder Include="Features\Employee\Handlers\" />
-    <Folder Include="Features\Employee\Mappers\" />
-    <Folder Include="Features\Employee\Validators\" />
-    <Folder Include="Features\Employee\Responses\" />
-    <Folder Include="Features\Employee\Queries\" />
-    <Folder Include="Features\Employee\Requests\" />
-    <Folder Include="Features\Feedback\Handlers\" />
-    <Folder Include="Features\Feedback\Mappers\" />
-    <Folder Include="Features\Feedback\Validators\" />
-    <Folder Include="Features\Feedback\Responses\" />
-    <Folder Include="Features\Feedback\Requests\" />
-    <Folder Include="Features\FoodImage\Queries\" />
-    <Folder Include="Features\Food\Commands\" />
-    <Folder Include="Features\Food\Handlers\" />
-    <Folder Include="Features\Food\Requests\" />
-    <Folder Include="Features\Food\Responses\" />
+    <Folder Include="Features\Employees\Commands\" />
+    <Folder Include="Features\Employees\Handlers\" />
+    <Folder Include="Features\Employees\Queries\" />
     <Folder Include="Features\Group\Commands\" />
     <Folder Include="Features\Group\Handlers\" />
     <Folder Include="Features\Group\Queries\" />

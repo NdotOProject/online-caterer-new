@@ -14,8 +14,16 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 					{
 						Id = 1,
 						FoodId = 1,
-						Name = "",
+						Name = "food_1_avatar.png",
+						Avatar = true,
 					},
+					new FoodImage
+					{
+						Id = 2,
+						FoodId = 1,
+						Name = "food_1.png",
+						Avatar = false,
+					}
 				}
 			);
 		}

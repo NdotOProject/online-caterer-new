@@ -7,15 +7,25 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 	{
 		public static void Initialize(this EntityTypeBuilder<Customer> entity)
 		{
-			/*entity.HasData(
+			entity.HasData(
 				new[]
 				{
 					new Customer
 					{
 						Id = 1,
-					}
+						FirstName = "Anh",
+						LastName = "Lê Đức",
+						Address = "Hà Nội, Việt Nam",
+					},
+					new Customer
+					{
+						Id = 2,
+						FirstName = "Nam",
+						LastName = "Trần Minh",
+						Address = "Hà Nội, Việt Nam",
+					},
 				}
-			);*/
+			);
 		}
 	}
 }

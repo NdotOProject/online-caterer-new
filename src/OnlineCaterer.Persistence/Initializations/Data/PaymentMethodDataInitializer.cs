@@ -15,25 +15,29 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 					{
 						Id = 1,
 						Name = "Cash",
-						Description = "",
+						Description = @"Is a classic payment method in which
+							the sender directly gives money to the recipient.",
 					},
 					new PaymentMethod
 					{
 						Id = 2,
 						Name = "Agribank",
-						Description = "",
+						Description = @"Is an online payment method
+							through the Agribank service.",
 					},
 					new PaymentMethod
 					{
 						Id = 3,
 						Name = "MB Bank",
-						Description = "",
+						Description = @"Is an online payment method
+							through the MB Bank service.",
 					},
 					new PaymentMethod
 					{
 						Id = 4,
 						Name = "VietcomBank",
-						Description = "",
+						Description = @"Is an online payment method
+							through the VietcomBank service.",
 					},
 				}
 			);

@@ -35,6 +35,24 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 						Name = "Fruit",
 						Description = "",
 					},
+					new FoodCategory
+					{
+						Id = 5,
+						Name = "Hamburger",
+						Description = ""
+					},
+					new FoodCategory
+					{
+						Id = 6,
+						Name = "Banh My",
+						Description = ""
+					},
+					new FoodCategory
+					{
+						Id = 7,
+						Name = "Pho",
+						Description = ""
+					},
 				}
 			);
 		}

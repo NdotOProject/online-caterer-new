@@ -9,7 +9,9 @@ namespace OnlineCaterer.Persistence.Repositories.Identity
 		: ReadOnlyRepository<UserType, int>,
 		IUserTypeRepository
 	{
-		public UserTypeRepository(OnlineCatererDbContext dbContext) : base(dbContext)
+		public UserTypeRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
 		{
 		}
 

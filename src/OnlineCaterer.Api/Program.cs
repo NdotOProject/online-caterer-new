@@ -1,5 +1,4 @@
 ﻿using OnlineCaterer.Persistence;
-using OnlineCaterer.Api.Controllers;
 using OnlineCaterer.Application;
 
 namespace OnlineCaterer.Api
@@ -15,6 +14,9 @@ namespace OnlineCaterer.Api
 			builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 			builder.Services.AddHttpContextAccessor();
+
+			//builder.Services.AddDistributedMemoryCache();
+			//builder.Services.AddSession();
 
 			// Add services to the container.
 
@@ -41,6 +43,8 @@ namespace OnlineCaterer.Api
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}
+
+			//app.UseSession();
 
 			app.UseHttpsRedirection();
 

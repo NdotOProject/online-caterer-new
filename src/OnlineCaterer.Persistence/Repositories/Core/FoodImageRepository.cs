@@ -4,10 +4,14 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class FoodImageRepository : FullActionRepository<FoodImage, int>, IFoodImageRepository
+	public class FoodImageRepository
+		: FullActionRepository<FoodImage, int>,
+		IFoodImageRepository
 	{
 		private readonly OnlineCatererDbContext _dbContext;
-		public FoodImageRepository(OnlineCatererDbContext dbContext) : base(dbContext)
+		public FoodImageRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
 		{
 			_dbContext = dbContext;
 		}
@@ -17,7 +21,8 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			await _dbContext.AddRangeAsync(images);
 		}
 
-		public async Task<IReadOnlyCollection<FoodImage>> GetByFoodId(int foodId)
+		public async Task<IReadOnlyCollection<FoodImage>>
+			GetByFoodId(int foodId)
 		{
 			return await GetAll(img => img.FoodId == foodId);
 		}

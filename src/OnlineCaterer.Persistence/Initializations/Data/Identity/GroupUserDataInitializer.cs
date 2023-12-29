@@ -15,6 +15,31 @@ namespace OnlineCaterer.Persistence.Initializations.Data.Identity
 						GroupId = 1,
 						UserId = 1,
 					},
+					new GroupUser
+					{
+						GroupId = 2,
+						UserId = 2,
+					},
+					new GroupUser
+					{
+						GroupId = 3,
+						UserId = 3,
+					},
+					new GroupUser
+					{
+						GroupId = 3,
+						UserId = 4,
+					},
+					new GroupUser
+					{
+						GroupId = 4,
+						UserId = 5,
+					},
+					new GroupUser
+					{
+						GroupId = 4,
+						UserId = 6,
+					}
 				}
 			);
 		}

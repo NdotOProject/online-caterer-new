@@ -15,7 +15,7 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 						Id = 1,
 						CustomerId = 1,
 						FoodId = 1,
-						Content = "",
+						Content = "perfect dish",
 						RatingPoint = 5,
 					},
 				}

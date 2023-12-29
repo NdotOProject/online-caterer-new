@@ -13,9 +13,18 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 					new Employee
 					{
 						Id = 1,
+						FirstName = "Anh",
+						LastName = "Vũ Tuấn",
 						Address = "Hà Nội, Việt Nam",
-						FirstName = "Tuấn Anh",
-						LastName = "Vũ",
+						RatingPoint = 0,
+						Status = false,
+					},
+					new Employee
+					{
+						Id = 2,
+						FirstName = "Thắng",
+						LastName = "Lê Thành",
+						Address = "Hà Nội, Việt Nam",
 						RatingPoint = 0,
 						Status = false,
 					},

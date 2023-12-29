@@ -7,6 +7,7 @@ namespace OnlineCaterer.Domain.Core
 		public int Id { get; set; }
 		public int FoodId { get; set; }
 		public string Name { get; set; } = null!;
+		public bool Avatar { get; set; }
 
 		// impl IAuditableEntity
 		public int ModifiedByUserType { get; set; }

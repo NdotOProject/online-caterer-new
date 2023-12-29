@@ -1,9 +1,11 @@
-﻿using OnlineCaterer.Application.Contracts.Repositories.Identity;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineCaterer.Application.Contracts.Repositories.Identity;
 using OnlineCaterer.Application.Exceptions;
 using OnlineCaterer.Application.Models.Identity.Helper;
 using OnlineCaterer.Domain.Identity;
 using OnlineCaterer.Domain.Identity.Relationship;
 using OnlineCaterer.Persistence.Repositories.Generic;
+using System.Linq.Expressions;
 
 namespace OnlineCaterer.Persistence.Repositories.Identity
 {
@@ -61,6 +63,30 @@ namespace OnlineCaterer.Persistence.Repositories.Identity
 			{
 				return false;
 			}
+		}
+
+		public new async Task<User> Get(int key)
+		{
+			return await Get(u => u.Id == key);
+		}
+
+		public new async Task<User> Get(
+			Expression<Func<User, bool>> predicate)
+		{
+			if (predicate == null)
+			{
+				throw new ArgumentNullException(nameof(predicate));
+			}
+
+			var query = _dbContext.Users
+				.Include(u => u.Permissions)
+				.Include(u => u.Groups)
+				.Where(predicate)
+				.Take(1);
+
+			return query.Any()
+				? await query.SingleAsync()
+				: throw new NotFoundException();
 		}
 
 		public async Task<IReadOnlyCollection<Permission>>

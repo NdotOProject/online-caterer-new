@@ -4,10 +4,14 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-    public class FoodCategoryRepository : FullActionRepository<FoodCategory, int>, IFoodCategoryRepository
-    {
-        public FoodCategoryRepository(OnlineCatererDbContext dbContext) : base(dbContext)
-        {
-        }
-    }
+	public class FoodCategoryRepository
+		: FullActionRepository<FoodCategory, int>,
+		IFoodCategoryRepository
+	{
+		public FoodCategoryRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
+		{
+		}
+	}
 }

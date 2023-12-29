@@ -2,15 +2,14 @@
 using OnlineCaterer.Application.Contracts.Identity.Services;
 using OnlineCaterer.Application.Features.Customers.Commands;
 using OnlineCaterer.Application.Features.Customers.Requests;
-using OnlineCaterer.Application.Features.Customers.Responses;
 using OnlineCaterer.Application.Models.Api.Handler;
 using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Customers.Handlers
 {
 	public class UpdateCustomerHandler
-		: PutHandler<UpdateCustomerCommand, UpdateCustomerRequest, UpdateCustomerResponse>,
-		IRequestHandler<UpdateCustomerCommand, DataResponse<UpdateCustomerResponse>>
+		: PutHandler<UpdateCustomerCommand, UpdateCustomerRequest>,
+		IRequestHandler<UpdateCustomerCommand, VoidResponse>
 	{
 		public UpdateCustomerHandler(
 			IPermissionProvider permissonProvider, IUserService userService)
@@ -18,7 +17,7 @@ namespace OnlineCaterer.Application.Features.Customers.Handlers
 		{
 		}
 
-		public async Task<DataResponse<UpdateCustomerResponse>> Handle(
+		public async Task<VoidResponse> Handle(
 			UpdateCustomerCommand request, CancellationToken cancellationToken)
 		{
 			return await GetResponse(request);
@@ -26,7 +25,7 @@ namespace OnlineCaterer.Application.Features.Customers.Handlers
 
 		protected override Task Resolve(
 			UpdateCustomerCommand request,
-			DataResponse<UpdateCustomerResponse> response)
+			VoidResponse response)
 		{
 			throw new NotImplementedException();
 		}

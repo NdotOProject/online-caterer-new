@@ -7,7 +7,7 @@ namespace OnlineCaterer.Persistence.Initializations.Data.Identity
 	{
 		public static void Initialize(this EntityTypeBuilder<UserPermission> entity)
 		{
-			entity.HasData(
+			/*entity.HasData(
 				new[]
 				{
 					new UserPermission
@@ -15,7 +15,7 @@ namespace OnlineCaterer.Persistence.Initializations.Data.Identity
 
 					},
 				}
-			);
+			);*/
 		}
 	}
 }

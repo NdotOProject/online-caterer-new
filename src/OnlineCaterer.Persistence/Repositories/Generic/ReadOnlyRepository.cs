@@ -5,75 +5,79 @@ using System.Linq.Expressions;
 
 namespace OnlineCaterer.Persistence.Repositories.Generic
 {
-    public class ReadOnlyRepository<TEntity, TKey> : IReadOnlyRepository<TEntity, TKey>
-        where TEntity : class
-        where TKey : IEquatable<TKey>
-    {
+	public class ReadOnlyRepository<TEntity, TKey>
+		: IReadOnlyRepository<TEntity, TKey>
+		where TEntity : class
+		where TKey : IEquatable<TKey>
+	{
 
-        private readonly DbSet<TEntity> _entity;
+		private readonly DbSet<TEntity> _entity;
 
-        public ReadOnlyRepository(OnlineCatererDbContext dbContext)
-        {
-            _entity = dbContext.Set<TEntity>();
-        }
+		public ReadOnlyRepository(
+			OnlineCatererDbContext dbContext)
+		{
+			_entity = dbContext.Set<TEntity>();
+		}
 
-        public async Task<bool> Contains(TKey key)
-        {
-            try
-            {
-                await Get(key);
-                return true;
-            }
-            catch (NotFoundException)
-            {
-                return false;
-            }
-        }
+		public async Task<bool> Contains(TKey key)
+		{
+			try
+			{
+				await Get(key);
+				return true;
+			}
+			catch (NotFoundException)
+			{
+				return false;
+			}
+		}
 
-        public async Task<TEntity> Get(TKey key)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
+		public async Task<TEntity> Get(TKey key)
+		{
+			if (key == null)
+			{
+				throw new ArgumentNullException(nameof(key));
+			}
 
-            TEntity? entity = await _entity.FindAsync(key);
-            return entity ?? throw new NotFoundException();
-        }
+			TEntity? entity = await _entity.FindAsync(key);
+			return entity ?? throw new NotFoundException();
+		}
 
-        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
-        {
-            if (predicate == null)
-            {
-                throw new ArgumentNullException(nameof(predicate));
-            }
+		public async Task<TEntity> Get(
+			Expression<Func<TEntity, bool>> predicate)
+		{
+			if (predicate == null)
+			{
+				throw new ArgumentNullException(nameof(predicate));
+			}
 
-            IQueryable<TEntity> query = _entity
-                .Where(predicate)
-                .Take(1);
+			IQueryable<TEntity> query = _entity
+				.Where(predicate)
+				.Take(1);
 
-            return query.Any()
-                ? await query.SingleAsync()
-                : throw new NotFoundException();
-        }
+			return query.Any()
+				? await query.SingleAsync()
+				: throw new NotFoundException();
+		}
 
-        public async Task<IReadOnlyCollection<TEntity>> GetAll()
-        {
-            return await _entity.ToListAsync();
-        }
+		public async Task<IReadOnlyCollection<TEntity>> GetAll()
+		{
+			return await _entity.ToListAsync();
+		}
 
-        public async Task<IReadOnlyCollection<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate)
-        {
-            if (predicate == null)
-            {
-                return await GetAll();
-            }
-            else
-            {
-                return await _entity
-                    .Where(predicate)
-                    .ToListAsync();
-            }
-        }
-    }
+		public async Task<IReadOnlyCollection<TEntity>> GetAll(
+			Expression<Func<TEntity, bool>> predicate)
+		{
+			if (predicate == null)
+			{
+				return await GetAll();
+			}
+			else
+			{
+				return await _entity
+					.Where(predicate)
+					.ToListAsync();
+			}
+		}
+	}
 }

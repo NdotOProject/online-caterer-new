@@ -2,12 +2,13 @@
 
 namespace OnlineCaterer.Domain.Core
 {
-	public class Feedback : IIdAutoIncrementEntity
+	public class Feedback
+		: IIdAutoIncrementEntity
 	{
 		public int Id { get; set; }
 		public int CustomerId { get; set; }
 		public int FoodId { get; set; }
-		public string Content { get; set; } = null!;
+		public string? Content { get; set; }
 		public int RatingPoint { get; set; }
 
 		// rel

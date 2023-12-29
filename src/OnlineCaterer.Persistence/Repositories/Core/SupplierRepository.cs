@@ -4,9 +4,13 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class SupplierRepository : FullActionRepository<Supplier, int>, ISupplierRepository
+	public class SupplierRepository
+		: FullActionRepository<Supplier, int>,
+		ISupplierRepository
 	{
-		public SupplierRepository(OnlineCatererDbContext dbContext) : base(dbContext)
+		public SupplierRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
 		{
 		}
 	}

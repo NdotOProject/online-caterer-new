@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCaterer.Application.Features.Auth.Login;
-using OnlineCaterer.Application.Features.Auth.Register;
 using OnlineCaterer.Application.Features.Customers.Commands;
 using OnlineCaterer.Application.Features.Customers.Requests;
 using OnlineCaterer.Application.Models.Api.Response;

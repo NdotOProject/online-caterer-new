@@ -4,8 +4,8 @@ using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Models.Api.Handler
 {
-	public abstract class PutHandler<TRequest, TBody, TResponse>
-		: ApiHandler<TRequest, DataResponse<TResponse>>
+	public abstract class PutHandler<TRequest, TBody>
+		: ApiHandler<TRequest, VoidResponse>
 		where TRequest : class, IApiBodyRequest<TBody>
 		where TBody : class, IRequestBody
 	{
@@ -16,7 +16,7 @@ namespace OnlineCaterer.Application.Models.Api.Handler
 		{
 		}
 
-		protected sealed override Func<DataResponse<TResponse>> ResponseProvider
-			=> () => new DataResponse<TResponse>();
+		protected sealed override Func<VoidResponse> ResponseProvider
+			=> () => new VoidResponse();
 	}
 }

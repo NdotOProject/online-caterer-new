@@ -4,9 +4,13 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class FeedbackRepository : FullActionRepository<Feedback, int>, IFeedbackRepository
+	public class FeedbackRepository
+		: FullActionRepository<Feedback, int>,
+		IFeedbackRepository
 	{
-		public FeedbackRepository(OnlineCatererDbContext dbContext) : base(dbContext)
+		public FeedbackRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
 		{
 		}
 	}

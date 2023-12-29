@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using OnlineCaterer.Application.DTOs.Feedback;
+using OnlineCaterer.Application.Models.Api.Request;
+using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Feedback.Commands
 {
-	internal class CreateFeedbackCommand
+	public class CreateFeedbackCommand
+		: IApiBodyRequest<CreateFeedbackDTO>,
+		IRequest<VoidResponse>
 	{
+		public CreateFeedbackDTO Body { get; set; } = null!;
 	}
 }

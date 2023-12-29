@@ -4,9 +4,13 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
-	public class EventRepository : FullActionRepository<Event, int>, IEventRepository
+	public class EventRepository
+		: FullActionRepository<Event, int>,
+		IEventRepository
 	{
-		public EventRepository(OnlineCatererDbContext dbContext) : base(dbContext)
+		public EventRepository(
+			OnlineCatererDbContext dbContext)
+			: base(dbContext)
 		{
 		}
 	}

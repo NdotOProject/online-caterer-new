@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using OnlineCaterer.Application.Models.Api.Request;
+using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Application.Features.Feedback.Commands
 {
-	internal class DeleteFeedbackCommand
+	public class DeleteFeedbackCommand
+		: IApiRequest,
+		IRequest<VoidResponse>
 	{
+		public int Id { get; set; }
 	}
 }
