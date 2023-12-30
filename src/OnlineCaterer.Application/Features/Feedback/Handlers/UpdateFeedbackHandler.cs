@@ -15,7 +15,7 @@ using System.Net;
 namespace OnlineCaterer.Application.Features.Feedback.Handlers
 {
 	public class UpdateFeedbackHandler
-		: PostHandler<UpdateFeedbackCommand, UpdateFeedbackDTO>,
+		: PostHandler<UpdateFeedbackCommand, FeedbackDTO>,
 		IRequestHandler<UpdateFeedbackCommand, VoidResponse>
 	{
 		private readonly IMapper _mapper;

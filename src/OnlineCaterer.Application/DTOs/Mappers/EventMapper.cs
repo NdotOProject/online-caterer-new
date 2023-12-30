@@ -7,11 +7,10 @@ namespace OnlineCaterer.Application.DTOs.Mappers
 	{
 		public EventMapper()
 		{
+			CreateMap<Domain.Core.Event, EventDTO>()
+				.ReverseMap();
+
 			CreateMap<CreateEventDTO, Domain.Core.Event>();
-
-			CreateMap<UpdateEventDTO, Domain.Core.Event>();
-
-			CreateMap<Domain.Core.Event, EventDTO>();
 		}
 	}
 }

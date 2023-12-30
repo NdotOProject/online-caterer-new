@@ -4,7 +4,7 @@ using OnlineCaterer.Application.Contracts.Persistence;
 namespace OnlineCaterer.Application.DTOs.Event.Validators
 {
 	public class UpdateEventValidator
-		: AbstractValidator<UpdateEventDTO>
+		: AbstractValidator<EventDTO>
 	{
 		public UpdateEventValidator(IUnitOfWork unitOfWork)
 		{

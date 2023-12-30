@@ -14,13 +14,14 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			_dbContext = dbContext;
 		}
 
-		public void Update(TEntity entity)
+		public Task Update(TEntity entity)
 		{
 			if (entity == null)
 			{
 				throw new ArgumentNullException(nameof(entity));
 			}
 			_dbContext.Entry(entity).State = EntityState.Modified;
+			return Task.CompletedTask;
 		}
 	}
 }

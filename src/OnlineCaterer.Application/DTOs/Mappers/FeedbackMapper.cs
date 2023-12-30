@@ -7,11 +7,10 @@ namespace OnlineCaterer.Application.DTOs.Mappers
 	{
 		public FeedbackMapper()
 		{
+			CreateMap<Domain.Core.Feedback, FeedbackDTO>()
+				.ReverseMap();
+
 			CreateMap<CreateFeedbackDTO, Domain.Core.Feedback>();
-
-			CreateMap<UpdateFeedbackDTO, Domain.Core.Feedback>();
-
-			CreateMap<Domain.Core.Feedback, FeedbackDTO>();
 		}
 	}
 }

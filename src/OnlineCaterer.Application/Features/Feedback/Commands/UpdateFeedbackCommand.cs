@@ -7,13 +7,13 @@ using OnlineCaterer.Application.Models.Api.Response;
 namespace OnlineCaterer.Application.Features.Feedback.Commands
 {
 	public class UpdateFeedbackCommand
-		: IApiBodyRequest<UpdateFeedbackDTO>,
+		: IApiBodyRequest<FeedbackDTO>,
 		IRequest<VoidResponse>
 	{
 		public int Id { get; set; }
 
-		private UpdateFeedbackDTO _dto = null!;
-		public UpdateFeedbackDTO Body
+		private FeedbackDTO _dto = null!;
+		public FeedbackDTO Body
 		{
 			get
 			{

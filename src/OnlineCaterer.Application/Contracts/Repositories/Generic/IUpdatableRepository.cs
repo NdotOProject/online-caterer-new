@@ -3,6 +3,6 @@
 	public interface IUpdatableRepository<TEntity>
 		where TEntity : class
 	{
-		void Update(TEntity entity);
+		Task Update(TEntity entity);
 	}
 }

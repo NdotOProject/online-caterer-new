@@ -7,11 +7,10 @@ namespace OnlineCaterer.Application.DTOs.Mappers
 	{
 		public FoodCategoryMapper()
 		{
+			CreateMap<Domain.Core.FoodCategory, FoodCategoryDTO>()
+				.ReverseMap();
+
 			CreateMap<CreateFoodCategoryDTO, Domain.Core.FoodCategory>();
-
-			CreateMap<UpdateFoodCategoryDTO, Domain.Core.FoodCategory>();
-
-			CreateMap<Domain.Core.FoodCategory, FoodCategoryDTO>();
 		}
 	}
 }

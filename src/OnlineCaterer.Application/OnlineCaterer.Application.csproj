@@ -16,26 +16,15 @@
     <Folder Include="Features\Employees\Commands\" />
     <Folder Include="Features\Employees\Handlers\" />
     <Folder Include="Features\Employees\Queries\" />
-    <Folder Include="Features\Group\Commands\" />
-    <Folder Include="Features\Group\Handlers\" />
-    <Folder Include="Features\Group\Queries\" />
-    <Folder Include="Features\Group\Requests\" />
-    <Folder Include="Features\Group\Responses\" />
-    <Folder Include="Features\OrderDetail\Handlers\" />
-    <Folder Include="Features\OrderDetail\Responses\" />
-    <Folder Include="Features\OrderDetail\Queries\" />
-    <Folder Include="Features\Order\Commands\" />
-    <Folder Include="Features\Order\Queries\" />
-    <Folder Include="Features\PaymentMethod\Commands\" />
-    <Folder Include="Features\PaymentMethod\Handlers\" />
-    <Folder Include="Features\PaymentMethod\Responses\" />
-    <Folder Include="Features\PaymentMethod\Queries\" />
-    <Folder Include="Features\PaymentMethod\Requests\" />
+    <Folder Include="Features\Groups\Handlers\" />
+    <Folder Include="Features\OrderDetails\Handlers\" />
+    <Folder Include="Features\OrderDetails\Queries\" />
+    <Folder Include="Features\Orders\Commands\" />
+    <Folder Include="Features\Orders\Handlers\" />
+    <Folder Include="Features\Orders\Queries\" />
     <Folder Include="Features\Supplier\Commands\" />
     <Folder Include="Features\Supplier\Handlers\" />
     <Folder Include="Features\Supplier\Queries\" />
-    <Folder Include="Features\Supplier\Requests\" />
-    <Folder Include="Features\Supplier\Responses\" />
   </ItemGroup>
 
   <ItemGroup>

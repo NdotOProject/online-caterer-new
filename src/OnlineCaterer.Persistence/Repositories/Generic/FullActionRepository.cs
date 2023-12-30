@@ -31,17 +31,17 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			return await _readOnlyRepository.Contains(key);
 		}
 
-		public void Delete(TEntity entity)
+		public Task Delete(TEntity entity)
 		{
-			_deletableRepository.Delete(entity);
+			return _deletableRepository.Delete(entity);
 		}
 
-		public async Task<TEntity> Get(TKey key)
+		public async Task<TEntity?> Get(TKey key)
 		{
 			return await _readOnlyRepository.Get(key);
 		}
 
-		public async Task<TEntity> Get(
+		public async Task<TEntity?> Get(
 			Expression<Func<TEntity, bool>> predicate)
 		{
 			return await _readOnlyRepository.Get(predicate);
@@ -58,9 +58,14 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			return await _readOnlyRepository.GetAll(predicate);
 		}
 
-		public void Update(TEntity entity)
+		public IQueryable<TEntity> GetQueryable()
 		{
-			_updatableRepository.Update(entity);
+			return _readOnlyRepository.GetQueryable();
+		}
+
+		public Task Update(TEntity entity)
+		{
+			return _updatableRepository.Update(entity);
 		}
 	}
 }

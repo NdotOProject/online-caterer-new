@@ -37,29 +37,6 @@ namespace OnlineCaterer.Application.Features.Foods.Handlers
 			return await GetResponse(request);
 		}
 
-		protected override async Task<Permission> GetPermission(
-			IPermissionProvider provider)
-			=> await provider.GetPermission(Objects.Food, Actions.Create);
-
-		protected override async Task Validate(
-			CreateFoodCommand request, ErrorList errorList)
-		{
-			var validator = new CreateFoodValidator(_unitOfWork);
-			var validationResult = await validator.ValidateAsync(request.Body);
-
-			foreach (var message in validationResult.Errors.Select(e => e.ErrorMessage))
-			{
-				errorList.Add(HttpStatusCode.BadRequest, message);
-			}
-		}
-
-		protected override Task Reject(
-			CreateFoodCommand request, VoidResponse response)
-		{
-			response.Message = "Creation Failed!";
-			return Task.CompletedTask;
-		}
-
 		protected override async Task Resolve(
 			CreateFoodCommand request, VoidResponse response)
 		{
@@ -78,6 +55,34 @@ namespace OnlineCaterer.Application.Features.Foods.Handlers
 
 			response.Message = $"The food with id {food.Id} has been created.";
 			response.Id = food.Id;
+		}
+
+		protected override Task Reject(
+			CreateFoodCommand request, VoidResponse response)
+		{
+			response.Message = "Creation Failed!";
+			return Task.CompletedTask;
+		}
+
+		protected override async Task<Permission> GetPermission(
+			IPermissionProvider provider)
+		{
+			return await provider.GetPermission(
+				Objects.Food,
+				Actions.Create
+			);
+		}
+
+		protected override async Task Validate(
+			CreateFoodCommand request, ErrorList errorList)
+		{
+			var validator = new CreateFoodValidator(_unitOfWork);
+			var validationResult = await validator.ValidateAsync(request.Body);
+
+			foreach (var message in validationResult.Errors.Select(e => e.ErrorMessage))
+			{
+				errorList.Add(HttpStatusCode.BadRequest, message);
+			}
 		}
 	}
 }

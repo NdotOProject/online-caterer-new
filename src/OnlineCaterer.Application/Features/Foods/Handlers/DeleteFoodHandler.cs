@@ -38,17 +38,17 @@ namespace OnlineCaterer.Application.Features.Foods.Handlers
 		{
 			var food = await _unitOfWork.FoodRepository.Get(request.Id);
 
-			foreach (var img in food.Images)
+			foreach (var img in food!.Images)
 			{
-				_unitOfWork.FoodImageRepository.Delete(img);
+				await _unitOfWork.FoodImageRepository.Delete(img);
 			}
 
 			foreach (var feedback in food.Feedbacks)
 			{
-				_unitOfWork.FeedbackRepository.Delete(feedback);
+				await _unitOfWork.FeedbackRepository.Delete(feedback);
 			}
 
-			_unitOfWork.FoodRepository.Delete(food);
+			await _unitOfWork.FoodRepository.Delete(food);
 
 			response.Id = food.Id;
 			response.Message = $"Food with ID {request.Id} has been deleted.";

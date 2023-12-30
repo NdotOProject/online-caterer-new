@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineCaterer.Application.Contracts.Repositories.Core;
 using OnlineCaterer.Application.Contracts.Repositories.Generic;
-using OnlineCaterer.Application.Exceptions;
 using OnlineCaterer.Application.Models.Identity.Conventions;
 using OnlineCaterer.Domain.Core;
 using OnlineCaterer.Persistence.Repositories.Generic;
@@ -30,12 +29,12 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			return await _creatableRepository.Add(entity);
 		}
 
-		public new async Task<Order> Get(int key)
+		public new async Task<Order?> Get(int key)
 		{
 			return await Get(o => o.Id == key);
 		}
 
-		public new async Task<Order> Get(
+		public new async Task<Order?> Get(
 			Expression<Func<Order, bool>> predicate)
 		{
 			if (predicate == null)
@@ -54,7 +53,7 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 
 			return query.Any()
 				? await query.SingleAsync()
-				: throw new NotFoundException();
+				: null;
 		}
 
 		public new async Task<IReadOnlyCollection<Order>> GetAll()

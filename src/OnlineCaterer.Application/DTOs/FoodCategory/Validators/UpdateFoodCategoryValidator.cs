@@ -4,7 +4,7 @@ using OnlineCaterer.Application.Contracts.Persistence;
 namespace OnlineCaterer.Application.DTOs.FoodCategory.Validators
 {
 	public class UpdateFoodCategoryValidator
-		: AbstractValidator<UpdateFoodCategoryDTO>
+		: AbstractValidator<FoodCategoryDTO>
 	{
 		public UpdateFoodCategoryValidator(IUnitOfWork unitOfWork)
 		{

@@ -7,13 +7,13 @@ using OnlineCaterer.Application.Models.Api.Response;
 namespace OnlineCaterer.Application.Features.Events.Commands
 {
 	public class UpdateEventCommand
-		: IApiBodyRequest<UpdateEventDTO>,
+		: IApiBodyRequest<EventDTO>,
 		IRequest<VoidResponse>
 	{
 		public int Id { get; set; }
 
-		private UpdateEventDTO _dto = null!;
-		public UpdateEventDTO Body
+		private EventDTO _dto = null!;
+		public EventDTO Body
 		{
 			get
 			{

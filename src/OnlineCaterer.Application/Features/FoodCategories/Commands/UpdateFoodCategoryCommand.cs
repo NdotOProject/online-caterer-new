@@ -7,13 +7,13 @@ using OnlineCaterer.Application.Models.Api.Response;
 namespace OnlineCaterer.Application.Features.FoodCategories.Commands
 {
 	public class UpdateFoodCategoryCommand
-		: IApiBodyRequest<UpdateFoodCategoryDTO>,
+		: IApiBodyRequest<FoodCategoryDTO>,
 		IRequest<VoidResponse>
 	{
 		public int Id { get; set; }
 
-		private UpdateFoodCategoryDTO _dto = null!;
-		public UpdateFoodCategoryDTO Body
+		private FoodCategoryDTO _dto = null!;
+		public FoodCategoryDTO Body
 		{
 			get
 			{

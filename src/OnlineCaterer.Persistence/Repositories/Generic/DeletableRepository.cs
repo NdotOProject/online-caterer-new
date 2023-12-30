@@ -13,13 +13,14 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			_dbContext = dbContext;
 		}
 
-		public void Delete(TEntity entity)
+		public Task Delete(TEntity entity)
 		{
 			if (entity == null)
 			{
 				throw new ArgumentNullException(nameof(entity));
 			}
-			_dbContext.Set<TEntity>().Remove(entity);
+			_dbContext.Remove(entity);
+			return Task.CompletedTask;
 		}
 	}
 }

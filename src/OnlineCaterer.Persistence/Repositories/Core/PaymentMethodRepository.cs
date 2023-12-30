@@ -5,7 +5,7 @@ using OnlineCaterer.Persistence.Repositories.Generic;
 namespace OnlineCaterer.Persistence.Repositories.Core
 {
 	public class PaymentMethodRepository
-		: ReadOnlyRepository<PaymentMethod, int>,
+		: FullActionRepository<PaymentMethod, int>,
 		IPaymentMethodRepository
 	{
 		public PaymentMethodRepository(

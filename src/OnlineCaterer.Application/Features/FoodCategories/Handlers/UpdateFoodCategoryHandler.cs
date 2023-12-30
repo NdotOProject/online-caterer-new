@@ -16,7 +16,7 @@ using System.Net;
 namespace OnlineCaterer.Application.Features.FoodCategories.Handlers
 {
 	public class UpdateFoodCategoryHandler
-		: PostHandler<UpdateFoodCategoryCommand, UpdateFoodCategoryDTO>,
+		: PostHandler<UpdateFoodCategoryCommand, FoodCategoryDTO>,
 		IRequestHandler<UpdateFoodCategoryCommand, VoidResponse>
 	{
 		private readonly IUnitOfWork _unitOfWork;

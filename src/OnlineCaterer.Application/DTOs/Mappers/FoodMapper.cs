@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using OnlineCaterer.Application.Contracts.Persistence;
 using OnlineCaterer.Application.DTOs.Food;
+using OnlineCaterer.Application.DTOs.FoodCategory;
 
 namespace OnlineCaterer.Application.DTOs.Mappers
 {

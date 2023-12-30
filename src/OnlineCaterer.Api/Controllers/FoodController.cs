@@ -18,11 +18,25 @@ namespace OnlineCaterer.Api.Controllers
 		{
 			_mediator = mediator;
 		}
+
 		[HttpGet]
 		public async Task<ActionResult<List<FoodDTO>>> Get()
 		{
 			var response = await _mediator.Send(
 				new GetListFoodQuery()
+			);
+			return Ok(response.ToJson());
+		}
+
+		[HttpGet("~/category/{id}/foods")]
+		public async Task<ActionResult<List<FoodDTO>>> GetByCategory(
+			[FromRoute(Name = "id")] int categoryId)
+		{
+			var response = await _mediator.Send(
+				new GetListFoodQuery
+				{
+					CategoryId = categoryId
+				}
 			);
 			return Ok(response.ToJson());
 		}

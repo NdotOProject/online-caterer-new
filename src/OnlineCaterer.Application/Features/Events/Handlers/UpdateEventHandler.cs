@@ -16,7 +16,7 @@ using System.Net;
 namespace OnlineCaterer.Application.Features.Events.Handlers
 {
 	public class UpdateEventHandler
-		: PutHandler<UpdateEventCommand, UpdateEventDTO>,
+		: PutHandler<UpdateEventCommand, EventDTO>,
 		IRequestHandler<UpdateEventCommand, VoidResponse>
 	{
 		private readonly IUnitOfWork _unitOfWork;

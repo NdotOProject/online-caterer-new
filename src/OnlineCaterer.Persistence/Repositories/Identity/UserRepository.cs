@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace OnlineCaterer.Persistence.Repositories.Identity
 {
-    public class UserRepository
+	public class UserRepository
 		: FullActionRepository<User, int>, IUserRepository
 	{
 		private readonly OnlineCatererDbContext _dbContext;
@@ -65,12 +65,12 @@ namespace OnlineCaterer.Persistence.Repositories.Identity
 			}
 		}
 
-		public new async Task<User> Get(int key)
+		public new async Task<User?> Get(int key)
 		{
 			return await Get(u => u.Id == key);
 		}
 
-		public new async Task<User> Get(
+		public new async Task<User?> Get(
 			Expression<Func<User, bool>> predicate)
 		{
 			if (predicate == null)
@@ -86,30 +86,33 @@ namespace OnlineCaterer.Persistence.Repositories.Identity
 
 			return query.Any()
 				? await query.SingleAsync()
-				: throw new NotFoundException();
+				: null;
 		}
 
 		public async Task<IReadOnlyCollection<Permission>>
 			GetPermissions(int userId)
 		{
-			User user = await Get(userId);
-
 			HashSet<Permission> permissions = new();
-			foreach (var permission in user.Permissions)
-			{
-				permissions.Add(
-					Permission.From(
-						permission.Object, permission.Action
-					)
-				);
-			}
+			User? user = await Get(userId);
 
-			foreach (var groupId in user.Groups
-				.Select(g => g.GroupId))
+			if (user != null)
 			{
-				var groupPermissions = await _groupRepository
-					.GetPermissions(groupId);
-				permissions.UnionWith(groupPermissions);
+				foreach (var permission in user.Permissions)
+				{
+					permissions.Add(
+						Permission.From(
+							permission.Object, permission.Action
+						)
+					);
+				}
+
+				foreach (var groupId in user.Groups
+					.Select(g => g.GroupId))
+				{
+					var groupPermissions = await _groupRepository
+						.GetPermissions(groupId);
+					permissions.UnionWith(groupPermissions);
+				}
 			}
 
 			return permissions;

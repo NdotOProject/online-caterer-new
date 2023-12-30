@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineCaterer.Application.Contracts.Repositories.Generic;
-using OnlineCaterer.Application.Exceptions;
 using System.Linq.Expressions;
 
 namespace OnlineCaterer.Persistence.Repositories.Generic
@@ -19,20 +18,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			_entity = dbContext.Set<TEntity>();
 		}
 
-		public async Task<bool> Contains(TKey key)
-		{
-			try
-			{
-				await Get(key);
-				return true;
-			}
-			catch (NotFoundException)
-			{
-				return false;
-			}
-		}
-
-		public async Task<TEntity> Get(TKey key)
+		public async Task<TEntity?> Get(TKey key)
 		{
 			if (key == null)
 			{
@@ -40,10 +26,10 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			}
 
 			TEntity? entity = await _entity.FindAsync(key);
-			return entity ?? throw new NotFoundException();
+			return entity;
 		}
 
-		public async Task<TEntity> Get(
+		public async Task<TEntity?> Get(
 			Expression<Func<TEntity, bool>> predicate)
 		{
 			if (predicate == null)
@@ -57,7 +43,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 
 			return query.Any()
 				? await query.SingleAsync()
-				: throw new NotFoundException();
+				: null;
 		}
 
 		public async Task<IReadOnlyCollection<TEntity>> GetAll()
@@ -78,6 +64,11 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 					.Where(predicate)
 					.ToListAsync();
 			}
+		}
+
+		public IQueryable<TEntity> GetQueryable()
+		{
+			return _entity;
 		}
 	}
 }

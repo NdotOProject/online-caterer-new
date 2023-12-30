@@ -11,14 +11,14 @@ using System.Net;
 
 namespace OnlineCaterer.Application.Features.Foods.Handlers
 {
-	public class GetOneFoodCommandHandler :
-		GetHandler<GetFoodDetailQuery, FoodDTO>,
+	public class GetFoodDetailHandler
+		: GetHandler<GetFoodDetailQuery, FoodDTO>,
 		IRequestHandler<GetFoodDetailQuery, DataResponse<FoodDTO>>
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
 
-		public GetOneFoodCommandHandler(
+		public GetFoodDetailHandler(
 			IPermissionProvider permissonProvider,
 			IUserService userService,
 			IMapper mapper,

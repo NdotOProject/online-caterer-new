@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineCaterer.Application.Contracts.Repositories.Core;
-using OnlineCaterer.Application.Exceptions;
 using OnlineCaterer.Domain.Core;
 using OnlineCaterer.Persistence.Repositories.Generic;
 using System.Linq.Expressions;
@@ -23,12 +22,12 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			_orderDetailRepository = orderDetailRepository;
 		}
 
-		public new async Task<Food> Get(int key)
+		public new async Task<Food?> Get(int key)
 		{
 			return await Get(f => f.Id == key);
 		}
 
-		public new async Task<Food> Get(
+		public new async Task<Food?> Get(
 			Expression<Func<Food, bool>> predicate)
 		{
 			if (predicate == null)
@@ -36,21 +35,18 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 				throw new ArgumentNullException(nameof(predicate));
 			}
 
-			IQueryable<Food> query = _dbContext.Foods
+			var query = GetQueryable()
 				.Where(predicate)
-				.Include(f => f.Feedbacks)
-				.Include(f => f.Images)
 				.Take(1);
 
 			return query.Any()
 				? await query.SingleAsync()
-				: throw new NotFoundException();
+				: null;
 		}
 
 		public new async Task<IReadOnlyCollection<Food>> GetAll()
 		{
-			return await _dbContext.Foods
-				.Include(food => food.Images)
+			return await GetQueryable()
 				.ToListAsync();
 		}
 
@@ -63,9 +59,8 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			}
 			else
 			{
-				return await _dbContext.Foods
+				return await GetQueryable()
 					.Where(predicate)
-					.Include(food => food.Images)
 					.ToListAsync();
 			}
 		}
@@ -84,6 +79,16 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			return orderDetails
 				.Select(od => od.Food)
 				.ToList();
+		}
+
+		public new IQueryable<Food> GetQueryable()
+		{
+			return _dbContext.Foods
+				.Include(f => f.Category)
+				.Include(f => f.Event)
+				.Include(f => f.Feedbacks)
+				.Include(f => f.Images)
+				.Include(f => f.Supplier);
 		}
 	}
 }

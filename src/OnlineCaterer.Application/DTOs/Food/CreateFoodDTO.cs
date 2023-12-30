@@ -12,6 +12,6 @@ namespace OnlineCaterer.Application.DTOs.Food
 		public string Description { get; set; } = null!;
 		public decimal UnitPrice { get; set; }
 
-		public List<string> Images { get; set; } = new List<string>();
+		public List<string> Images { get; set; } = new();
 	}
 }

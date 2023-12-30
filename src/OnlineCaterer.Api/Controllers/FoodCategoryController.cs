@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using OnlineCaterer.Application.DTOs.FoodCategory;
 using OnlineCaterer.Application.Features.FoodCategories.Commands;
+using OnlineCaterer.Application.Features.FoodCategories.Queries;
+using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Api.Controllers
 {
@@ -7,18 +11,28 @@ namespace OnlineCaterer.Api.Controllers
 	[ApiController]
 	public class FoodCategoryController : ControllerBase
 	{
-		[HttpGet]
-		public IEnumerable<string> Get()
+		private readonly IMediator _mediator;
+
+		public FoodCategoryController(IMediator mediator)
 		{
-			return new string[] { "value1", "value2" };
+			_mediator = mediator;
 		}
 
+		[HttpGet]
+		public async Task<ActionResult<ListResponse<FoodCategoryDTO>>> Get()
+		{
+			var response = await _mediator.Send(
+				new GetListFoodCategoryQuery()
+			);
+			return Ok(response.ToJson());
+		}
+		/*
 		[HttpGet("{id}")]
 		public string Get(int id)
 		{
 			return "value";
 		}
-
+		*/
 		[HttpPost]
 		public void Post([FromBody] string value)
 		{

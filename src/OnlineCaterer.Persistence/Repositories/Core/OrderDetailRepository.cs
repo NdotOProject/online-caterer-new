@@ -37,9 +37,9 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 			await _dbContext.AddRangeAsync(orderDetails);
 		}
 
-		public void Delete(OrderDetail entity)
+		public Task Delete(OrderDetail entity)
 		{
-			_deletableRepository.Delete(entity);
+			return _deletableRepository.Delete(entity);
 		}
 
 		public async Task<IReadOnlyCollection<OrderDetail>>
@@ -52,9 +52,9 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 				.ToListAsync();
 		}
 
-		public void Update(OrderDetail entity)
+		public Task Update(OrderDetail entity)
 		{
-			_updatableRepository.Update(entity);
+			return _updatableRepository.Update(entity);
 		}
 	}
 }

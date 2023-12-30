@@ -16,14 +16,14 @@ using System.Net;
 namespace OnlineCaterer.Application.Features.Foods.Handlers
 {
 	// update food => insert or delete image
-	public class UpdateFoodCommandHandler :
+	public class UpdateFoodHandler :
 		PutHandler<UpdateFoodCommand, UpdateFoodDTO>,
 		IRequestHandler<UpdateFoodCommand, VoidResponse>
 	{
 		private readonly IMapper _mapper;
 		private readonly IUnitOfWork _unitOfWork;
 
-		public UpdateFoodCommandHandler(
+		public UpdateFoodHandler(
 			IUserService userService,
 			IPermissionProvider permissionProvider,
 			IMapper mapper,
@@ -45,7 +45,7 @@ namespace OnlineCaterer.Application.Features.Foods.Handlers
 			VoidResponse response)
 		{
 			var food = _mapper.Map<Food>(request.Body);
-			_unitOfWork.FoodRepository.Update(food);
+			await _unitOfWork.FoodRepository.Update(food);
 
 			await _unitOfWork.SaveChanges(await GetUser());
 
