@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using OnlineCaterer.Application.DTOs.Food;
-using OnlineCaterer.Application.DTOs.FoodCategory;
 
 namespace OnlineCaterer.Application.DTOs.Mappers
 {

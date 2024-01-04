@@ -22,8 +22,10 @@ namespace OnlineCaterer.Persistence.Identity.Services
 
 		private int GetUserId()
 		{
+			var uid = _httpContextAccessor.HttpContext.Request.Headers["uid"];
 			return Convert.ToInt32(
-				_httpContextAccessor.HttpContext.Request.Cookies[CustomClaimTypes.Uid]
+				uid.Single()
+				//_httpContextAccessor.HttpContext.Request.Cookies[CustomClaimTypes.Uid]
 			//_httpContextAccessor.HttpContext.User.FindFirst(CustomClaimTypes.Uid)?.Value
 			);
 		}

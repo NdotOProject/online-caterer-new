@@ -45,6 +45,42 @@ namespace OnlineCaterer.Application.Features.Foods.Handlers
 			VoidResponse response)
 		{
 			var food = _mapper.Map<Food>(request.Body);
+
+			var newImagesNames = food.Images.Select(img => img.Name).ToList();
+			var existedImages = await _unitOfWork.FoodImageRepository.GetByFoodId(food.Id);
+			foreach (var image in existedImages)
+			{
+				if (!newImagesNames.Contains(image.Name))
+				{
+					await _unitOfWork.FoodImageRepository.Delete(image);
+				}
+			}
+
+			var foodImages = new HashSet<FoodImage>();
+			foreach (var image in newImagesNames)
+			{
+				var isExistImage = existedImages
+					.Where(img => img.Name == image)
+					.Take(1);
+				if (isExistImage.Any())
+				{
+					foodImages.Add(isExistImage.Single());
+				}
+				else
+				{
+					var addedImg = await _unitOfWork.FoodImageRepository.Add(
+						new FoodImage
+						{
+							FoodId = food.Id,
+							Name = image,
+						}
+					);
+					foodImages.Add(addedImg);
+				}
+			}
+
+			food.Images = foodImages;
+
 			await _unitOfWork.FoodRepository.Update(food);
 
 			await _unitOfWork.SaveChanges(await GetUser());

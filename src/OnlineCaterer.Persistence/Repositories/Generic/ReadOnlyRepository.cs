@@ -68,7 +68,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 
 		public IQueryable<TEntity> GetQueryable()
 		{
-			return _entity;
+			return _entity.AsNoTracking();
 		}
 	}
 }

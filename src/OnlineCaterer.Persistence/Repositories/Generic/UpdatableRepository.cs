@@ -20,6 +20,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			{
 				throw new ArgumentNullException(nameof(entity));
 			}
+			_dbContext.Set<TEntity>().Attach(entity);
 			_dbContext.Entry(entity).State = EntityState.Modified;
 			return Task.CompletedTask;
 		}
