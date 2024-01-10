@@ -25,16 +25,7 @@ namespace OnlineCaterer.Api.Controllers
 			);
 			return Ok(response.ToJson());
 		}
-		/*
-		[HttpGet("{id}")]
-		public async Task<ActionResult<EventDTO>> Get(int id)
-		{
-			var response = await _mediator.Send(
-				new GetEvent
-			);
-			return "value";
-		}
-		*/
+/*
 		[HttpPost]
 		public void Post([FromBody] string value)
 		{
@@ -48,6 +39,6 @@ namespace OnlineCaterer.Api.Controllers
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{
-		}
+		}*/
 	}
 }

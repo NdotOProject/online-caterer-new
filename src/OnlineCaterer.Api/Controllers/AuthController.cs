@@ -7,7 +7,7 @@ using OnlineCaterer.Application.Models.Api.Response;
 
 namespace OnlineCaterer.Api.Controllers
 {
-	[Route("api/auth")]
+	[Route("api/[controller]")]
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
@@ -32,7 +32,7 @@ namespace OnlineCaterer.Api.Controllers
 				? Ok(reponse.ToJson())
 				: BadRequest(reponse.ToJson());
 		}
-
+/*
 		[HttpPost("/register")]
 		public async Task<ActionResult<string>> Register(
 			[FromBody] CreateCustomerRequest request)
@@ -44,6 +44,6 @@ namespace OnlineCaterer.Api.Controllers
 				}
 			);
 			return Ok(reponse.ToJson());
-		}
+		}*/
 	}
 }

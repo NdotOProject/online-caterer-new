@@ -10,5 +10,6 @@ namespace OnlineCaterer.Application.Features.Foods.Queries
 		IRequest<ListResponse<FoodDTO>>
 	{
 		public int? CategoryId { get; set; }
+		public int? EventId { get; set; }
 	}
 }

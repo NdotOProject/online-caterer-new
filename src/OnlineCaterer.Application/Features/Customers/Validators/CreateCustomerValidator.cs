@@ -26,7 +26,7 @@ namespace OnlineCaterer.Application.Features.Customers.Validators
 					bool isExists =
 						await unitOfWork.UserRepository
 							.ExistsByEmail(email);
-					return !isExists;
+					return isExists;
 				})
 				.WithSeverity(Severity.Error)
 				.WithMessage("This email has been registered.");

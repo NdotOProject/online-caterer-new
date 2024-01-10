@@ -15,6 +15,21 @@ namespace OnlineCaterer.Api
 
 			builder.Services.AddHttpContextAccessor();
 
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy(
+					name: "MyCors",
+					policy =>
+					{
+						policy.WithOrigins(
+							//"https://localhost:7296"
+							//"http://localhost:3000/"
+							"*"
+						).AllowAnyHeader()
+						.AllowAnyMethod();
+					});
+			});
+
 			//builder.Services.AddDistributedMemoryCache();
 			//builder.Services.AddSession();
 
@@ -44,6 +59,7 @@ namespace OnlineCaterer.Api
 				app.UseSwaggerUI();
 			}
 
+			app.UseCors("MyCors");
 			//app.UseSession();
 
 			app.UseHttpsRedirection();

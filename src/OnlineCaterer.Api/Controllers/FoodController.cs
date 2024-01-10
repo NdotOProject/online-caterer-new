@@ -20,22 +20,15 @@ namespace OnlineCaterer.Api.Controllers
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<List<FoodDTO>>> Get()
-		{
-			var response = await _mediator.Send(
-				new GetListFoodQuery()
-			);
-			return Ok(response.ToJson());
-		}
-
-		[HttpGet("~/category/{id}/foods")]
-		public async Task<ActionResult<List<FoodDTO>>> GetByCategory(
-			[FromRoute(Name = "id")] int categoryId)
+		public async Task<ActionResult<List<FoodDTO>>> GetAll(
+			[FromQuery] int? categoryId,
+			[FromQuery] int? eventId)
 		{
 			var response = await _mediator.Send(
 				new GetListFoodQuery
 				{
-					CategoryId = categoryId
+					CategoryId = categoryId,
+					EventId = eventId
 				}
 			);
 			return Ok(response.ToJson());
@@ -71,7 +64,7 @@ namespace OnlineCaterer.Api.Controllers
 				? Created("", null)
 				: BadRequest(response.ToJson());
 		}
-
+/*
 		[HttpPut("{id}")]
 		public async Task<ActionResult<VoidResponse>> Put(
 			int id, [FromBody] UpdateFoodDTO request)
@@ -102,6 +95,6 @@ namespace OnlineCaterer.Api.Controllers
 			return response.Success
 				? Ok(response.ToJson())
 				: Unauthorized(response.ToJson());
-		}
+		}*/
 	}
 }

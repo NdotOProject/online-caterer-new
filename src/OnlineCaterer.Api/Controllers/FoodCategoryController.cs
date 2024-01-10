@@ -26,13 +26,7 @@ namespace OnlineCaterer.Api.Controllers
 			);
 			return Ok(response.ToJson());
 		}
-		/*
-		[HttpGet("{id}")]
-		public string Get(int id)
-		{
-			return "value";
-		}
-		*/
+/*
 		[HttpPost]
 		public void Post([FromBody] string value)
 		{
@@ -49,6 +43,6 @@ namespace OnlineCaterer.Api.Controllers
 		public void Delete(int id)
 		{
 			var cmd = new DeleteFoodCategoryCommand();
-		}
+		}*/
 	}
 }
