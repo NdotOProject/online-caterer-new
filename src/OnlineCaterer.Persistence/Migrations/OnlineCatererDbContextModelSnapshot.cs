@@ -372,7 +372,115 @@ namespace OnlineCaterer.Persistence.Migrations
                             Name = "Fried Chicken",
                             RatingPoint = 5,
                             SupplierId = 1,
-                            UnitPrice = 499999m
+                            UnitPrice = 499000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentQuantity = 5,
+                            Description = "Boiled chicken is a simple, attractive, light and healthy dish.",
+                            Discontinued = false,
+                            EventId = 1,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "Boiled Chicken",
+                            RatingPoint = 0,
+                            SupplierId = 1,
+                            UnitPrice = 299000m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentQuantity = 5,
+                            Description = "Crab Meat, Tailed Shrimp, Singapore Chilli Sauce, Mayonnaise Sauce, Mozzarella Cheese, Tomato, Onion",
+                            Discontinued = false,
+                            EventId = 1,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "Singapore Chili Crab",
+                            RatingPoint = 0,
+                            SupplierId = 2,
+                            UnitPrice = 215000m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentQuantity = 5,
+                            Description = "Beefsteak, Demi-Glace Sauce (Steak Sauce), Sour Cream Sauce, Mozzarella Cheese, Mushrooms, Tomatoes, Onions, Seaweed Powder.",
+                            Discontinued = false,
+                            EventId = 1,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "New York CheeseSteak",
+                            RatingPoint = 0,
+                            SupplierId = 2,
+                            UnitPrice = 250000m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentQuantity = 5,
+                            Description = "We love nothing more than designing\r\n							an original cake for your special day with your\r\n							personal style and theme in mind. There are many\r\n							variables when it comes to setting a price for a\r\n							wedding cake – the complexity of design, the number\r\n							of servings, among other things.\r\n							Because each cake features a custom design to meet\r\n							the needs of each of our clients, there is no set\r\n							price on custom cakes and are individually quoted\r\n							and tailored based upon your cake come true. Please\r\n							contact us for any inquiries for a more accurate quote.",
+                            Discontinued = false,
+                            EventId = 3,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "Wedding Cake",
+                            RatingPoint = 0,
+                            SupplierId = 2,
+                            UnitPrice = 599000m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 3,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentQuantity = 5,
+                            Description = "This chocolate sponge cake has a deep\r\n							chocolate infused sponge that is sandwiches\r\n							together with a thick chocolate frosting that melts\r\n							in the mouth. Decorated with cute macarons and\r\n							black star-shaped chocolate, the cake absolutely\r\n							please your taste buds.",
+                            Discontinued = false,
+                            EventId = 2,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "SPONGE CAKE CHOCOLATE 8P",
+                            RatingPoint = 0,
+                            SupplierId = 1,
+                            UnitPrice = 480000m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 3,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentQuantity = 5,
+                            Description = "A signature recipe, our Baked Cheeesecake,\r\n							having a smooth creamy texture, stands tall on a\r\n							coconut flakes base, with a pinch of cinnamon\r\n							flavor. This rich cheesecake is topped with our\r\n							homemade biscuit crust that is toasted to glory!",
+                            Discontinued = false,
+                            EventId = 2,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "BAKED CHEESECAKE 8-12P",
+                            RatingPoint = 0,
+                            SupplierId = 1,
+                            UnitPrice = 660000m
                         });
                 });
 
@@ -552,14 +660,74 @@ namespace OnlineCaterer.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            Avatar = false,
+                            Avatar = true,
                             CreatedBy = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FoodId = 1,
+                            FoodId = 2,
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Name = "food_1.png"
+                            Name = "food_2_img.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Avatar = true,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 3,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "PIZZA+SINGAPORE+CHILI+CRAB.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Avatar = true,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 4,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "Menu+BG+1.jpg"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Avatar = true,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 5,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "Wedding_Cake.jpg"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Avatar = true,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 6,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "SPONGE_CAKE_CHOCOLATE_8P.jpg"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Avatar = true,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 7,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedByUserType = 0,
+                            Name = "BAKED_CHEESECAKE_8-12P.jpg"
                         });
                 });
 
@@ -1525,7 +1693,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm4KZhopC6OBugv6p6H+S4fiFA+lE/KpCYnF5B4L5bOabyhSyDA+ihlguzKvcMAPuB0=",
+                            Password = "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm6T+DQE416M5HSoZ9UM6z8EcpS/AwGulOcQy3j0b0QR+BP20t+zUgIYoV2pjJRPV20=",
                             PhoneNumber = "0123456789",
                             Status = true,
                             UserId = 1,
@@ -1541,7 +1709,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bgQVj79pDxe34f1qzLX/qLGSpiH1zKj7XLnyNpUpGf1sgbei13WxVAUPy08PHUHMxg==",
+                            Password = "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bqlcYx3reC64jdy/NpJADcEcHVuOrbHIGtCSwwG3pS1qQvHnMBBMHIu3vlFRn8jwhw==",
                             PhoneNumber = "1234567890",
                             Status = true,
                             UserId = 2,
@@ -1557,7 +1725,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tKHvQHil5FeZjG+P3LmQXr22/MOG888d0aG9XqO1LJKNz7MXN2GXktEwZWDezMwf8",
+                            Password = "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tFx5aSuTQblHxUmvjkfXSLT56ElV5CQnaEZ6LKHNHEHR5KntDIsPaTxyjFm+L0QH8",
                             PhoneNumber = "0923456789",
                             Status = true,
                             UserId = 1,
@@ -1573,7 +1741,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZuwRgwpF2AxUJuwaPZwSpU348oEe7gKRMkAIRe9tsX8eUtbT3F6YW548PeopOzTOht",
+                            Password = "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZu1WkMVXfUHevIZKuOMIbLHdGbI+9uSnj6R7lwg8qiLbnrkNjHFHRZZs6EP82Mdgpo",
                             PhoneNumber = "0956784321",
                             Status = true,
                             UserId = 2,
@@ -1589,7 +1757,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm4sV+yGAJvwsed/FQ7e9qkd2/q2qKKDw3Hb41AdbhOrFjjcPaw57Wgk+ssxCc8yl4U=",
+                            Password = "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm7w5Z1FG0leUJ05VhyRB8cwrMxhb6519g9kEovbu6iGxT5n8GNrMVrI02H4S8AiW/0=",
                             PhoneNumber = "0917236485",
                             Status = true,
                             UserId = 1,
@@ -1605,7 +1773,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm5wMXkIU9kvPQOsa5AYlBfLtBkPmYhIAryrdy4tERo6R4dfrz+sutItWYBpoW2/e/Q=",
+                            Password = "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm65r4Mvtsp5NiF4nd0oWGN37MrtpvPJzhK8z9esjCQBkt3O9sSPT2eHFguiM7qudfk=",
                             PhoneNumber = "0193284675",
                             Status = true,
                             UserId = 2,

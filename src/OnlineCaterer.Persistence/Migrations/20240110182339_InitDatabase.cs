@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineCaterer.Persistence.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class InitDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -583,7 +583,16 @@ namespace OnlineCaterer.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "Foods",
                 columns: new[] { "Id", "CategoryId", "CreatedBy", "CreatedDate", "CurrentQuantity", "Description", "EventId", "LastModifiedBy", "LastModifiedDate", "ModifiedByUserType", "Name", "RatingPoint", "SupplierId", "UnitPrice" },
-                values: new object[] { 1, 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Fried Chicken", 5, 1, 499999m });
+                values: new object[,]
+                {
+                    { 1, 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Fried Chicken", 5, 1, 499000m },
+                    { 2, 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Boiled chicken is a simple, attractive, light and healthy dish.", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Boiled Chicken", 0, 1, 299000m },
+                    { 3, 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Crab Meat, Tailed Shrimp, Singapore Chilli Sauce, Mayonnaise Sauce, Mozzarella Cheese, Tomato, Onion", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Singapore Chili Crab", 0, 2, 215000m },
+                    { 4, 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Beefsteak, Demi-Glace Sauce (Steak Sauce), Sour Cream Sauce, Mozzarella Cheese, Mushrooms, Tomatoes, Onions, Seaweed Powder.", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "New York CheeseSteak", 0, 2, 250000m },
+                    { 5, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "We love nothing more than designing\r\n							an original cake for your special day with your\r\n							personal style and theme in mind. There are many\r\n							variables when it comes to setting a price for a\r\n							wedding cake – the complexity of design, the number\r\n							of servings, among other things.\r\n							Because each cake features a custom design to meet\r\n							the needs of each of our clients, there is no set\r\n							price on custom cakes and are individually quoted\r\n							and tailored based upon your cake come true. Please\r\n							contact us for any inquiries for a more accurate quote.", 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Wedding Cake", 0, 2, 599000m },
+                    { 6, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "This chocolate sponge cake has a deep\r\n							chocolate infused sponge that is sandwiches\r\n							together with a thick chocolate frosting that melts\r\n							in the mouth. Decorated with cute macarons and\r\n							black star-shaped chocolate, the cake absolutely\r\n							please your taste buds.", 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "SPONGE CAKE CHOCOLATE 8P", 0, 1, 480000m },
+                    { 7, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "A signature recipe, our Baked Cheeesecake,\r\n							having a smooth creamy texture, stands tall on a\r\n							coconut flakes base, with a pinch of cinnamon\r\n							flavor. This rich cheesecake is topped with our\r\n							homemade biscuit crust that is toasted to glory!", 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "BAKED CHEESECAKE 8-12P", 0, 1, 660000m }
+                });
 
             migrationBuilder.InsertData(
                 table: "GroupPermissions",
@@ -624,13 +633,7 @@ namespace OnlineCaterer.Persistence.Migrations
                     { 2, 3, 4 },
                     { 2, 3, 5 },
                     { 2, 3, 6 },
-                    { 2, 3, 7 },
-                    { 2, 3, 8 },
-                    { 2, 3, 9 },
-                    { 2, 3, 11 },
-                    { 2, 3, 12 },
-                    { 2, 4, 1 },
-                    { 2, 4, 2 }
+                    { 2, 3, 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -638,6 +641,12 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "ActionId", "GroupId", "ObjectId" },
                 values: new object[,]
                 {
+                    { 2, 3, 8 },
+                    { 2, 3, 9 },
+                    { 2, 3, 11 },
+                    { 2, 3, 12 },
+                    { 2, 4, 1 },
+                    { 2, 4, 2 },
                     { 2, 4, 3 },
                     { 2, 4, 4 },
                     { 2, 4, 5 },
@@ -668,12 +677,12 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "LastModifiedBy", "LastModifiedDate", "ModifiedByUserType", "Password", "PhoneNumber", "Status", "UserId", "UserName", "UserTypeId" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.vt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm4KZhopC6OBugv6p6H+S4fiFA+lE/KpCYnF5B4L5bOabyhSyDA+ihlguzKvcMAPuB0=", "0123456789", true, 1, "Vũ Tuấn Anh", 1 },
-                    { 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "thang.lt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bgQVj79pDxe34f1qzLX/qLGSpiH1zKj7XLnyNpUpGf1sgbei13WxVAUPy08PHUHMxg==", "1234567890", true, 2, "Lê Thành Thắng", 1 },
-                    { 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "aptechfood@gmail.com", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tKHvQHil5FeZjG+P3LmQXr22/MOG888d0aG9XqO1LJKNz7MXN2GXktEwZWDezMwf8", "0923456789", true, 1, "Aptech Food", 3 },
-                    { 4, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "kiet.bt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZuwRgwpF2AxUJuwaPZwSpU348oEe7gKRMkAIRe9tsX8eUtbT3F6YW548PeopOzTOht", "0956784321", true, 2, "Lẩu Kiệt", 3 },
-                    { 5, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.ld@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm4sV+yGAJvwsed/FQ7e9qkd2/q2qKKDw3Hb41AdbhOrFjjcPaw57Wgk+ssxCc8yl4U=", "0917236485", true, 1, "Lê Đức Anh", 2 },
-                    { 6, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "nam.tm@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm5wMXkIU9kvPQOsa5AYlBfLtBkPmYhIAryrdy4tERo6R4dfrz+sutItWYBpoW2/e/Q=", "0193284675", true, 2, "Trần Minh Nam", 2 }
+                    { 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.vt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm6T+DQE416M5HSoZ9UM6z8EcpS/AwGulOcQy3j0b0QR+BP20t+zUgIYoV2pjJRPV20=", "0123456789", true, 1, "Vũ Tuấn Anh", 1 },
+                    { 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "thang.lt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bqlcYx3reC64jdy/NpJADcEcHVuOrbHIGtCSwwG3pS1qQvHnMBBMHIu3vlFRn8jwhw==", "1234567890", true, 2, "Lê Thành Thắng", 1 },
+                    { 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "aptechfood@gmail.com", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tFx5aSuTQblHxUmvjkfXSLT56ElV5CQnaEZ6LKHNHEHR5KntDIsPaTxyjFm+L0QH8", "0923456789", true, 1, "Aptech Food", 3 },
+                    { 4, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "kiet.bt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZu1WkMVXfUHevIZKuOMIbLHdGbI+9uSnj6R7lwg8qiLbnrkNjHFHRZZs6EP82Mdgpo", "0956784321", true, 2, "Lẩu Kiệt", 3 },
+                    { 5, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.ld@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm7w5Z1FG0leUJ05VhyRB8cwrMxhb6519g9kEovbu6iGxT5n8GNrMVrI02H4S8AiW/0=", "0917236485", true, 1, "Lê Đức Anh", 2 },
+                    { 6, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "nam.tm@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm65r4Mvtsp5NiF4nd0oWGN37MrtpvPJzhK8z9esjCQBkt3O9sSPT2eHFguiM7qudfk=", "0193284675", true, 2, "Trần Minh Nam", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -684,12 +693,16 @@ namespace OnlineCaterer.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "FoodImages",
                 columns: new[] { "Id", "Avatar", "CreatedBy", "CreatedDate", "FoodId", "LastModifiedBy", "LastModifiedDate", "ModifiedByUserType", "Name" },
-                values: new object[] { 1, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "food_1_avatar.png" });
-
-            migrationBuilder.InsertData(
-                table: "FoodImages",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "FoodId", "LastModifiedBy", "LastModifiedDate", "ModifiedByUserType", "Name" },
-                values: new object[] { 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "food_1.png" });
+                values: new object[,]
+                {
+                    { 1, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "food_1_avatar.png" },
+                    { 2, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "food_2_img.jpg" },
+                    { 3, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "PIZZA+SINGAPORE+CHILI+CRAB.jpg" },
+                    { 4, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Menu+BG+1.jpg" },
+                    { 5, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Wedding_Cake.jpg" },
+                    { 6, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "SPONGE_CAKE_CHOCOLATE_8P.jpg" },
+                    { 7, true, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "BAKED_CHEESECAKE_8-12P.jpg" }
+                });
 
             migrationBuilder.InsertData(
                 table: "GroupUsers",

@@ -20,10 +20,45 @@ namespace OnlineCaterer.Persistence.Initializations.Data
 					new FoodImage
 					{
 						Id = 2,
-						FoodId = 1,
-						Name = "food_1.png",
-						Avatar = false,
-					}
+						FoodId = 2,
+						Name = "food_2_img.jpg",
+						Avatar = true,
+					},
+					new FoodImage
+					{
+						Id = 3,
+						FoodId = 3,
+						Name = "PIZZA+SINGAPORE+CHILI+CRAB.jpg",
+						Avatar = true,
+					},
+					new FoodImage
+					{
+						Id = 4,
+						FoodId = 4,
+						Name = "Menu+BG+1.jpg",
+						Avatar = true,
+					},
+					new FoodImage
+					{
+						Id = 5,
+						FoodId = 5,
+						Name = "Wedding_Cake.jpg",
+						Avatar = true,
+					},
+					new FoodImage
+					{
+						Id = 6,
+						FoodId = 6,
+						Name = "SPONGE_CAKE_CHOCOLATE_8P.jpg",
+						Avatar = true,
+					},
+					new FoodImage
+					{
+						Id = 7,
+						FoodId = 7,
+						Name = "BAKED_CHEESECAKE_8-12P.jpg",
+						Avatar = true,
+					},
 				}
 			);
 		}
