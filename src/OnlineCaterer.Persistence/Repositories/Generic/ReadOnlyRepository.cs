@@ -37,7 +37,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 				throw new ArgumentNullException(nameof(predicate));
 			}
 
-			IQueryable<TEntity> query = _entity
+			IQueryable<TEntity> query = GetQueryable()
 				.Where(predicate)
 				.Take(1);
 
@@ -48,7 +48,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 
 		public async Task<IReadOnlyCollection<TEntity>> GetAll()
 		{
-			return await _entity.ToListAsync();
+			return await GetQueryable().ToListAsync();
 		}
 
 		public async Task<IReadOnlyCollection<TEntity>> GetAll(
@@ -60,7 +60,7 @@ namespace OnlineCaterer.Persistence.Repositories.Generic
 			}
 			else
 			{
-				return await _entity
+				return await GetQueryable()
 					.Where(predicate)
 					.ToListAsync();
 			}

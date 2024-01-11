@@ -34,36 +34,18 @@ namespace OnlineCaterer.Application.Features.Foods.Handlers
 			return await GetResponse(request);
 		}
 
-		protected override async Task Resolve(
+		protected override Task Resolve(
 			GetListFoodQuery request, ListResponse<FoodDTO> response)
 		{
-			IReadOnlyCollection<Food> foods;
-			if (request.CategoryId != null && request.EventId != null)
-			{
-				foods = await _unitOfWork.FoodRepository.GetAll(
-					food =>
-						food.CategoryId == request.CategoryId
-						&& food.EventId == request.EventId
-				);
-			}
-			else if (request.EventId != null)
-			{
-				foods = await _unitOfWork.FoodRepository.GetAll(
-					food => food.EventId == request.EventId
-				);
-			}
-			else if (request.CategoryId != null)
-			{
-				foods = await _unitOfWork.FoodRepository.GetAll(
-					food => food.CategoryId == request.CategoryId
-				);
-			}
-			else
-			{
-				foods = await _unitOfWork.FoodRepository.GetAll();
-			}
+			var foods = _unitOfWork.FoodRepository
+				.GetQueryable()
+				.Where(f => request.Name == null || f.Name.Contains(request.Name))
+				.Where(f => request.CategoryId == null || f.CategoryId == request.CategoryId)
+				.Where(f => request.EventId == null || f.EventId == request.EventId);
 
-			response.Payload = _mapper.Map<List<FoodDTO>>(foods);
+			response.Payload = _mapper.Map<List<FoodDTO>>(foods.ToList());
+
+			return Task.CompletedTask;
 		}
 	}
 }

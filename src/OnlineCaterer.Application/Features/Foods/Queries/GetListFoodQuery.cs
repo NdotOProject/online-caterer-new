@@ -9,6 +9,7 @@ namespace OnlineCaterer.Application.Features.Foods.Queries
 		: IApiRequest,
 		IRequest<ListResponse<FoodDTO>>
 	{
+		public string? Name { get; set; }
 		public int? CategoryId { get; set; }
 		public int? EventId { get; set; }
 	}

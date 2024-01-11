@@ -548,8 +548,8 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Is a classic payment method in which\r\n							the sender directly gives money to the recipient.", "Cash" },
-                    { 2, "Is an online payment method\r\n							through the Agribank service.", "Agribank" }
+                    { 1, "Is a classic payment method in which the sender directly gives money to the recipient.", "Cash" },
+                    { 2, "Is an online payment method through the Agribank service.", "Agribank" }
                 });
 
             migrationBuilder.InsertData(
@@ -557,8 +557,8 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
-                    { 3, "Is an online payment method\r\n							through the MB Bank service.", "MB Bank" },
-                    { 4, "Is an online payment method\r\n							through the VietcomBank service.", "VietcomBank" }
+                    { 3, "Is an online payment method through the MB Bank service.", "MB Bank" },
+                    { 4, "Is an online payment method through the VietcomBank service.", "VietcomBank" }
                 });
 
             migrationBuilder.InsertData(
@@ -566,8 +566,8 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "Id", "Address", "Introduction", "Name", "RatingPoint", "Status" },
                 values: new object[,]
                 {
-                    { 1, "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội.", "With a long-standing brand, highly\r\n							appreciated by famous chefs and customers around\r\n							the world. We will provide the perfect service of\r\n							a 5-star hotel at attractive prices.", "Aptech Food", 5, 1 },
-                    { 2, "Hà Nội, Việt Nam", "Lẩu Kiệt where to find the best\r\n							dishes in Vietnam. Come to us, you will have the\r\n							best experiences of your life.", "Lẩu Kiệt", 0, 1 }
+                    { 1, "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội.", "With a long-standing brand, highly appreciated by famous chefs and customers around the world. We will provide the perfect service of a 5-star hotel at attractive prices.", "Aptech Food", 5, 1 },
+                    { 2, "Hà Nội, Việt Nam", "Lẩu Kiệt where to find the best dishes in Vietnam. Come to us, you will have the best experiences of your life.", "Lẩu Kiệt", 0, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -585,13 +585,13 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedBy", "CreatedDate", "CurrentQuantity", "Description", "EventId", "LastModifiedBy", "LastModifiedDate", "ModifiedByUserType", "Name", "RatingPoint", "SupplierId", "UnitPrice" },
                 values: new object[,]
                 {
-                    { 1, 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Fried Chicken", 5, 1, 499000m },
+                    { 1, 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Attractive fast food for all ages", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Fried Chicken", 5, 1, 499000m },
                     { 2, 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Boiled chicken is a simple, attractive, light and healthy dish.", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Boiled Chicken", 0, 1, 299000m },
                     { 3, 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Crab Meat, Tailed Shrimp, Singapore Chilli Sauce, Mayonnaise Sauce, Mozzarella Cheese, Tomato, Onion", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Singapore Chili Crab", 0, 2, 215000m },
                     { 4, 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Beefsteak, Demi-Glace Sauce (Steak Sauce), Sour Cream Sauce, Mozzarella Cheese, Mushrooms, Tomatoes, Onions, Seaweed Powder.", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "New York CheeseSteak", 0, 2, 250000m },
-                    { 5, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "We love nothing more than designing\r\n							an original cake for your special day with your\r\n							personal style and theme in mind. There are many\r\n							variables when it comes to setting a price for a\r\n							wedding cake – the complexity of design, the number\r\n							of servings, among other things.\r\n							Because each cake features a custom design to meet\r\n							the needs of each of our clients, there is no set\r\n							price on custom cakes and are individually quoted\r\n							and tailored based upon your cake come true. Please\r\n							contact us for any inquiries for a more accurate quote.", 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Wedding Cake", 0, 2, 599000m },
-                    { 6, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "This chocolate sponge cake has a deep\r\n							chocolate infused sponge that is sandwiches\r\n							together with a thick chocolate frosting that melts\r\n							in the mouth. Decorated with cute macarons and\r\n							black star-shaped chocolate, the cake absolutely\r\n							please your taste buds.", 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "SPONGE CAKE CHOCOLATE 8P", 0, 1, 480000m },
-                    { 7, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "A signature recipe, our Baked Cheeesecake,\r\n							having a smooth creamy texture, stands tall on a\r\n							coconut flakes base, with a pinch of cinnamon\r\n							flavor. This rich cheesecake is topped with our\r\n							homemade biscuit crust that is toasted to glory!", 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "BAKED CHEESECAKE 8-12P", 0, 1, 660000m }
+                    { 5, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "We love nothing more than designing an original cake for your special day with your personal style and theme in mind. There are many variables when it comes to setting a price for a wedding cake – the complexity of design, the number of servings, among other things.Because each cake features a custom design to meet the needs of each of our clients, there is no set price on custom cakes and are individually quoted and tailored based upon your cake come true. Please contact us for any inquiries for a more accurate quote. ", 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Wedding Cake", 0, 2, 599000m },
+                    { 6, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "This chocolate sponge cake has a deep chocolate infused sponge that is sandwiches together with a thick chocolate frosting that melts in the mouth. Decorated with cute macarons and black star-shaped chocolate, the cake absolutely please your taste buds.", 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "SPONGE CAKE CHOCOLATE 8P", 0, 1, 480000m },
+                    { 7, 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "A signature recipe, our Baked Cheeesecake, having a smooth creamy texture, stands tall on a coconut flakes base, with a pinch of cinnamon flavor. This rich cheesecake is topped with our homemade biscuit crust that is toasted to glory!", 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "BAKED CHEESECAKE 8-12P", 0, 1, 660000m }
                 });
 
             migrationBuilder.InsertData(
@@ -677,12 +677,12 @@ namespace OnlineCaterer.Persistence.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "LastModifiedBy", "LastModifiedDate", "ModifiedByUserType", "Password", "PhoneNumber", "Status", "UserId", "UserName", "UserTypeId" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.vt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm6T+DQE416M5HSoZ9UM6z8EcpS/AwGulOcQy3j0b0QR+BP20t+zUgIYoV2pjJRPV20=", "0123456789", true, 1, "Vũ Tuấn Anh", 1 },
-                    { 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "thang.lt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bqlcYx3reC64jdy/NpJADcEcHVuOrbHIGtCSwwG3pS1qQvHnMBBMHIu3vlFRn8jwhw==", "1234567890", true, 2, "Lê Thành Thắng", 1 },
-                    { 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "aptechfood@gmail.com", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tFx5aSuTQblHxUmvjkfXSLT56ElV5CQnaEZ6LKHNHEHR5KntDIsPaTxyjFm+L0QH8", "0923456789", true, 1, "Aptech Food", 3 },
-                    { 4, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "kiet.bt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZu1WkMVXfUHevIZKuOMIbLHdGbI+9uSnj6R7lwg8qiLbnrkNjHFHRZZs6EP82Mdgpo", "0956784321", true, 2, "Lẩu Kiệt", 3 },
-                    { 5, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.ld@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm7w5Z1FG0leUJ05VhyRB8cwrMxhb6519g9kEovbu6iGxT5n8GNrMVrI02H4S8AiW/0=", "0917236485", true, 1, "Lê Đức Anh", 2 },
-                    { 6, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "nam.tm@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm65r4Mvtsp5NiF4nd0oWGN37MrtpvPJzhK8z9esjCQBkt3O9sSPT2eHFguiM7qudfk=", "0193284675", true, 2, "Trần Minh Nam", 2 }
+                    { 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.vt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm7cXUVxmXSGHiS+x5Lo7r984OITGCtRmwAWlCcYOvCzfJORc9vKXOhDVoDRwUTbSQY=", "0123456789", true, 1, "Vũ Tuấn Anh", 1 },
+                    { 2, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "thang.lt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bskrQ4+UO4rl6W7Z9SifKmtji15z2o3vawoVPOO77p9Jdiv/d9fdUpU2pgdBqNKwXA==", "1234567890", true, 2, "Lê Thành Thắng", 1 },
+                    { 3, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "aptechfood@gmail.com", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tryV6mN8dRjAMC3DDLwK+FOjGsW+qsgj3p3sGE9zsx1ylcHtrwsIcfqzzm/zn4b2v", "0923456789", true, 1, "Aptech Food", 3 },
+                    { 4, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "kiet.bt@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZuyikST6b20xVTPdI739cBEQjOCAmbn92/45ZXxhJ9DiCnM78UrgP5jnDPwuMkdFEX", "0956784321", true, 2, "Lẩu Kiệt", 3 },
+                    { 5, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "anh.ld@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm4YAOfqDIUg5sqUXJ29kQ3U5/fuYGZjnmrWzE+Xv/L5kpawO5h2YBFDbvOBUie6lJo=", "0917236485", true, 1, "Lê Đức Anh", 2 },
+                    { 6, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "nam.tm@aptechlearning.edu.vn", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm7ZCTnVUjMa6B5hYgahupy4CuxaYJd1MEVLLv5oAoxYYNoon0UsFPJaDw0M4V03B8c=", "0193284675", true, 2, "Trần Minh Nam", 2 }
                 });
 
             migrationBuilder.InsertData(

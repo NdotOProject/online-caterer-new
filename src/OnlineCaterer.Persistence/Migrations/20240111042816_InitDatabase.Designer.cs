@@ -12,7 +12,7 @@ using OnlineCaterer.Persistence;
 namespace OnlineCaterer.Persistence.Migrations
 {
     [DbContext(typeof(OnlineCatererDbContext))]
-    [Migration("20240110182339_InitDatabase")]
+    [Migration("20240111042816_InitDatabase")]
     partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -365,7 +365,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             CreatedBy = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentQuantity = 5,
-                            Description = "",
+                            Description = "Attractive fast food for all ages",
                             Discontinued = false,
                             EventId = 1,
                             LastModifiedBy = 0,
@@ -374,7 +374,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             Name = "Fried Chicken",
                             RatingPoint = 5,
                             SupplierId = 1,
-                            UnitPrice = 499999m
+                            UnitPrice = 499000m
                         },
                         new
                         {
@@ -437,7 +437,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             CreatedBy = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentQuantity = 5,
-                            Description = "We love nothing more than designing\r\n							an original cake for your special day with your\r\n							personal style and theme in mind. There are many\r\n							variables when it comes to setting a price for a\r\n							wedding cake – the complexity of design, the number\r\n							of servings, among other things.\r\n							Because each cake features a custom design to meet\r\n							the needs of each of our clients, there is no set\r\n							price on custom cakes and are individually quoted\r\n							and tailored based upon your cake come true. Please\r\n							contact us for any inquiries for a more accurate quote.",
+                            Description = "We love nothing more than designing an original cake for your special day with your personal style and theme in mind. There are many variables when it comes to setting a price for a wedding cake – the complexity of design, the number of servings, among other things.Because each cake features a custom design to meet the needs of each of our clients, there is no set price on custom cakes and are individually quoted and tailored based upon your cake come true. Please contact us for any inquiries for a more accurate quote. ",
                             Discontinued = false,
                             EventId = 3,
                             LastModifiedBy = 0,
@@ -455,7 +455,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             CreatedBy = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentQuantity = 5,
-                            Description = "This chocolate sponge cake has a deep\r\n							chocolate infused sponge that is sandwiches\r\n							together with a thick chocolate frosting that melts\r\n							in the mouth. Decorated with cute macarons and\r\n							black star-shaped chocolate, the cake absolutely\r\n							please your taste buds.",
+                            Description = "This chocolate sponge cake has a deep chocolate infused sponge that is sandwiches together with a thick chocolate frosting that melts in the mouth. Decorated with cute macarons and black star-shaped chocolate, the cake absolutely please your taste buds.",
                             Discontinued = false,
                             EventId = 2,
                             LastModifiedBy = 0,
@@ -473,7 +473,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             CreatedBy = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentQuantity = 5,
-                            Description = "A signature recipe, our Baked Cheeesecake,\r\n							having a smooth creamy texture, stands tall on a\r\n							coconut flakes base, with a pinch of cinnamon\r\n							flavor. This rich cheesecake is topped with our\r\n							homemade biscuit crust that is toasted to glory!",
+                            Description = "A signature recipe, our Baked Cheeesecake, having a smooth creamy texture, stands tall on a coconut flakes base, with a pinch of cinnamon flavor. This rich cheesecake is topped with our homemade biscuit crust that is toasted to glory!",
                             Discontinued = false,
                             EventId = 2,
                             LastModifiedBy = 0,
@@ -841,25 +841,25 @@ namespace OnlineCaterer.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Is a classic payment method in which\r\n							the sender directly gives money to the recipient.",
+                            Description = "Is a classic payment method in which the sender directly gives money to the recipient.",
                             Name = "Cash"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Is an online payment method\r\n							through the Agribank service.",
+                            Description = "Is an online payment method through the Agribank service.",
                             Name = "Agribank"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Is an online payment method\r\n							through the MB Bank service.",
+                            Description = "Is an online payment method through the MB Bank service.",
                             Name = "MB Bank"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Is an online payment method\r\n							through the VietcomBank service.",
+                            Description = "Is an online payment method through the VietcomBank service.",
                             Name = "VietcomBank"
                         });
                 });
@@ -903,7 +903,7 @@ namespace OnlineCaterer.Persistence.Migrations
                         {
                             Id = 1,
                             Address = "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội.",
-                            Introduction = "With a long-standing brand, highly\r\n							appreciated by famous chefs and customers around\r\n							the world. We will provide the perfect service of\r\n							a 5-star hotel at attractive prices.",
+                            Introduction = "With a long-standing brand, highly appreciated by famous chefs and customers around the world. We will provide the perfect service of a 5-star hotel at attractive prices.",
                             Name = "Aptech Food",
                             RatingPoint = 5,
                             Status = 1
@@ -912,7 +912,7 @@ namespace OnlineCaterer.Persistence.Migrations
                         {
                             Id = 2,
                             Address = "Hà Nội, Việt Nam",
-                            Introduction = "Lẩu Kiệt where to find the best\r\n							dishes in Vietnam. Come to us, you will have the\r\n							best experiences of your life.",
+                            Introduction = "Lẩu Kiệt where to find the best dishes in Vietnam. Come to us, you will have the best experiences of your life.",
                             Name = "Lẩu Kiệt",
                             RatingPoint = 0,
                             Status = 1
@@ -1695,7 +1695,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm6T+DQE416M5HSoZ9UM6z8EcpS/AwGulOcQy3j0b0QR+BP20t+zUgIYoV2pjJRPV20=",
+                            Password = "AQAAAAEAAAPoAAAAEGFuaC52dEBhcHRlY2hsZWFybmluZy5lZHUudm7cXUVxmXSGHiS+x5Lo7r984OITGCtRmwAWlCcYOvCzfJORc9vKXOhDVoDRwUTbSQY=",
                             PhoneNumber = "0123456789",
                             Status = true,
                             UserId = 1,
@@ -1711,7 +1711,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bqlcYx3reC64jdy/NpJADcEcHVuOrbHIGtCSwwG3pS1qQvHnMBBMHIu3vlFRn8jwhw==",
+                            Password = "AQAAAAEAAAPoAAAAEHRoYW5nLmx0QGFwdGVjaGxlYXJuaW5nLmVkdS52bskrQ4+UO4rl6W7Z9SifKmtji15z2o3vawoVPOO77p9Jdiv/d9fdUpU2pgdBqNKwXA==",
                             PhoneNumber = "1234567890",
                             Status = true,
                             UserId = 2,
@@ -1727,7 +1727,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tFx5aSuTQblHxUmvjkfXSLT56ElV5CQnaEZ6LKHNHEHR5KntDIsPaTxyjFm+L0QH8",
+                            Password = "AQAAAAEAAAPoAAAAEGFwdGVjaGZvb2RAZ21haWwuY29tryV6mN8dRjAMC3DDLwK+FOjGsW+qsgj3p3sGE9zsx1ylcHtrwsIcfqzzm/zn4b2v",
                             PhoneNumber = "0923456789",
                             Status = true,
                             UserId = 1,
@@ -1743,7 +1743,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZu1WkMVXfUHevIZKuOMIbLHdGbI+9uSnj6R7lwg8qiLbnrkNjHFHRZZs6EP82Mdgpo",
+                            Password = "AQAAAAEAAAPoAAAAEGtpZXQuYnRAYXB0ZWNobGVhcm5pbmcuZWR1LnZuyikST6b20xVTPdI739cBEQjOCAmbn92/45ZXxhJ9DiCnM78UrgP5jnDPwuMkdFEX",
                             PhoneNumber = "0956784321",
                             Status = true,
                             UserId = 2,
@@ -1759,7 +1759,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm7w5Z1FG0leUJ05VhyRB8cwrMxhb6519g9kEovbu6iGxT5n8GNrMVrI02H4S8AiW/0=",
+                            Password = "AQAAAAEAAAPoAAAAEGFuaC5sZEBhcHRlY2hsZWFybmluZy5lZHUudm4YAOfqDIUg5sqUXJ29kQ3U5/fuYGZjnmrWzE+Xv/L5kpawO5h2YBFDbvOBUie6lJo=",
                             PhoneNumber = "0917236485",
                             Status = true,
                             UserId = 1,
@@ -1775,7 +1775,7 @@ namespace OnlineCaterer.Persistence.Migrations
                             LastModifiedBy = 0,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifiedByUserType = 0,
-                            Password = "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm65r4Mvtsp5NiF4nd0oWGN37MrtpvPJzhK8z9esjCQBkt3O9sSPT2eHFguiM7qudfk=",
+                            Password = "AQAAAAEAAAPoAAAAEG5hbS50bUBhcHRlY2hsZWFybmluZy5lZHUudm7ZCTnVUjMa6B5hYgahupy4CuxaYJd1MEVLLv5oAoxYYNoon0UsFPJaDw0M4V03B8c=",
                             PhoneNumber = "0193284675",
                             Status = true,
                             UserId = 2,

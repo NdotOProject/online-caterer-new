@@ -21,12 +21,14 @@ namespace OnlineCaterer.Api.Controllers
 
 		[HttpGet]
 		public async Task<ActionResult<List<FoodDTO>>> GetAll(
+			[FromQuery] string? name,
 			[FromQuery] int? categoryId,
 			[FromQuery] int? eventId)
 		{
 			var response = await _mediator.Send(
 				new GetListFoodQuery
 				{
+					Name = name,
 					CategoryId = categoryId,
 					EventId = eventId
 				}

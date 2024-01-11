@@ -89,7 +89,8 @@ namespace OnlineCaterer.Persistence.Repositories.Core
 				.Include(f => f.Feedbacks)
 				.Include(f => f.Images)
 				.Include(f => f.Supplier)
-				.AsNoTracking();
+				.AsNoTracking()
+				.AsSingleQuery();
 		}
 	}
 }

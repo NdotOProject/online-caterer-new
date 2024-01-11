@@ -23,8 +23,6 @@
     <Folder Include="Features\Orders\Handlers\" />
     <Folder Include="Features\Orders\Queries\" />
     <Folder Include="Features\Supplier\Commands\" />
-    <Folder Include="Features\Supplier\Handlers\" />
-    <Folder Include="Features\Supplier\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
